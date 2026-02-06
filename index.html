@@ -1120,7 +1120,7 @@
          <h3 class="font-semibold text-blue-400 mb-1">Acceso Completo para Miembros</h3>
          <p class="text-gray-400 text-sm">Los miembros registrados de CONVERGE-IA tienen acceso a versiones extendidas, actualizaciones y recursos adicionales no disponibles públicamente.</p><button onclick="navigateTo('login')" class="mt-3 text-blue-400 hover:text-blue-300 text-sm font-medium flex items-center gap-2">
           <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" /> <line x1="12" y1="8" x2="12" y2="16" /> <line x1="8" y1="12" x2="16" y2="12" />
-          </svg> Acceder a miembros → </button>
+          </svg> Acceder a miembros �� </button>
         </div>
        </div>
       </div>
@@ -1250,7 +1250,7 @@
          <div class="w-16 h-16 rounded-full bg-purple-500/20 flex items-center justify-center mx-auto mb-4"><span class="text-3xl font-bold text-purple-400">2</span>
          </div>
          <h3 class="font-display text-lg font-semibold mb-3">Diseño Participativo</h3>
-         <p class="text-gray-400 text-sm mb-4">Co-creación del marco de gobernanza con actores internos (académicos, gestores, investigadores).</p>
+         <p class="text-gray-400 text-sm mb-4">Co-creaci��n del marco de gobernanza con actores internos (académicos, gestores, investigadores).</p>
          <p class="text-xs text-gray-500">~4-6 semanas</p>
         </div><!-- Phase 3 -->
         <div class="glass-card rounded-2xl p-6 text-center border-t-4 border-green-500">
@@ -1301,6 +1301,221 @@
       <div class="glass-card rounded-3xl p-8 md:p-12 text-center glow-blue">
        <h2 class="font-display text-2xl font-bold mb-4">¿Tu institución necesita gobernanza de IA?</h2>
        <p class="text-gray-400 mb-8 max-w-2xl mx-auto">Solicita una consulta inicial gratuita con nuestro equipo especializado para conocer cómo podemos apoyar a tu institución.</p><button onclick="handleGovernanceRequest()" class="btn-primary px-10 py-4 rounded-xl font-semibold text-lg"> Solicitar Acompañamiento </button>
+      </div>
+     </div>
+    </div>
+   </section><!-- ========== PAGE: GOVERNANCE REQUEST ========== -->
+   <section id="page-governance-request" class="page-section">
+    <div class="pt-24 pb-16 gradient-mesh">
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+       <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-sm mb-6">
+        <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2"><path d="M12 3v18" /> <path d="M5 6l7-3 7 3" /> <path d="M5 6v8a7 7 0 0 0 7 7 7 7 0 0 0 7-7V6" />
+        </svg><span>Acompañamiento Personalizado</span>
+       </div>
+       <h1 class="font-display text-4xl sm:text-5xl font-bold mb-6">Solicitar Información sobre Gobernanza de IA</h1>
+       <p class="text-gray-400 text-lg max-w-3xl mx-auto">Cuéntanos sobre tu institución y tus necesidades específicas. Nuestro equipo te proporcionará asesoría personalizada para implementar un marco de gobernanza ética de IA.</p>
+      </div>
+     </div>
+    </div>
+    <div class="pb-20" style="background-color: var(--secondary-surface);">
+     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8">
+      <div class="glass-card rounded-3xl p-8 md:p-12 mb-8">
+       <h2 class="font-display text-2xl font-bold mb-2 flex items-center gap-3">
+        <svg width="28" height="28" viewbox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+        </svg> Formulario de Consulta</h2>
+       <p class="text-gray-400 mb-8">Completa este formulario y un especialista en gobernanza de IA se comunicará contigo dentro de 5 días hábiles.</p>
+       <form id="governance-request-form" class="space-y-6"><!-- Institutional Information -->
+        <div class="border-b border-gray-700 pb-6">
+         <h3 class="font-semibold text-lg mb-4 flex items-center gap-2"><span class="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-400 font-bold text-sm">1</span> Información Institucional</h3>
+         <div class="grid md:grid-cols-2 gap-6">
+          <div><label class="block text-sm font-medium text-gray-300 mb-2">Nombre de la institución *</label> <input type="text" name="inst_name" placeholder="Universidad..." class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500" required>
+          </div>
+          <div><label class="block text-sm font-medium text-gray-300 mb-2">País *</label> <select name="country" class="w-full input-field rounded-xl py-3 px-4 text-white" required> <option value="" class="bg-gray-800">Seleccione un país</option> <option value="CR" class="bg-gray-800">Costa Rica</option> <option value="MX" class="bg-gray-800">México</option> <option value="CO" class="bg-gray-800">Colombia</option> <option value="AR" class="bg-gray-800">Argentina</option> <option value="CL" class="bg-gray-800">Chile</option> <option value="PE" class="bg-gray-800">Perú</option> <option value="EC" class="bg-gray-800">Ecuador</option> <option value="ES" class="bg-gray-800">España</option> <option value="OTHER" class="bg-gray-800">Otro</option> </select>
+          </div>
+          <div><label class="block text-sm font-medium text-gray-300 mb-2">Tipo de institución *</label> <select name="inst_type" class="w-full input-field rounded-xl py-3 px-4 text-white" required> <option value="" class="bg-gray-800">Seleccione</option> <option value="university" class="bg-gray-800">Universidad</option> <option value="research" class="bg-gray-800">Centro de Investigación</option> <option value="government" class="bg-gray-800">Organismo Público</option> <option value="ngo" class="bg-gray-800">ONG / Institución Sin Fines de Lucro</option> </select>
+          </div>
+          <div><label class="block text-sm font-medium text-gray-300 mb-2">Número de investigadores en IA</label> <select name="researchers_count" class="w-full input-field rounded-xl py-3 px-4 text-white"> <option value="" class="bg-gray-800">Seleccione</option> <option value="1-5" class="bg-gray-800">1-5</option> <option value="6-15" class="bg-gray-800">6-15</option> <option value="16-30" class="bg-gray-800">16-30</option> <option value="31-50" class="bg-gray-800">31-50</option> <option value="50+" class="bg-gray-800">Más de 50</option> </select>
+          </div>
+         </div>
+        </div><!-- Contact Person -->
+        <div class="border-b border-gray-700 pb-6">
+         <h3 class="font-semibold text-lg mb-4 flex items-center gap-2"><span class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold text-sm">2</span> Persona de Contacto</h3>
+         <div class="grid md:grid-cols-2 gap-6">
+          <div><label class="block text-sm font-medium text-gray-300 mb-2">Nombre completo *</label> <input type="text" name="contact_name" placeholder="Tu nombre" class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500" required>
+          </div>
+          <div><label class="block text-sm font-medium text-gray-300 mb-2">Cargo *</label> <input type="text" name="contact_role" placeholder="Ej: Director de Investigación" class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500" required>
+          </div>
+          <div><label class="block text-sm font-medium text-gray-300 mb-2">Correo electrónico *</label> <input type="email" name="contact_email" placeholder="tu@institucion.edu" class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500" required>
+          </div>
+          <div><label class="block text-sm font-medium text-gray-300 mb-2">Teléfono</label> <input type="tel" name="contact_phone" placeholder="+506 0000-0000" class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500">
+          </div>
+         </div>
+        </div><!-- Current Situation -->
+        <div class="border-b border-gray-700 pb-6">
+         <h3 class="font-semibold text-lg mb-4 flex items-center gap-2"><span class="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 font-bold text-sm">3</span> Situación Actual de tu Institución</h3>
+         <div><label class="block text-sm font-medium text-gray-300 mb-3">¿Tiene tu institución una política o marco de gobernanza de IA? *</label>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3"><label class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors"> <input type="radio" name="has_governance" value="yes" class="text-amber-500" required> <span class="text-sm">Sí, formal</span> </label> <label class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors"> <input type="radio" name="has_governance" value="informal" class="text-amber-500"> <span class="text-sm">Informal/Incipiente</span> </label> <label class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors"> <input type="radio" name="has_governance" value="no" class="text-amber-500"> <span class="text-sm">No existe</span> </label> <label class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors"> <input type="radio" name="has_governance" value="planning" class="text-amber-500"> <span class="text-sm">En planificación</span> </label>
+          </div>
+         </div>
+         <div class="mt-6"><label class="block text-sm font-medium text-gray-300 mb-3">Áreas de IA donde desean implementar gobernanza *</label>
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-3"><label class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors"> <input type="checkbox" name="ai_areas" value="research" class="text-amber-500 rounded"> <span class="text-sm">Investigación</span> </label> <label class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors"> <input type="checkbox" name="ai_areas" value="teaching" class="text-amber-500 rounded"> <span class="text-sm">Enseñanza</span> </label> <label class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors"> <input type="checkbox" name="ai_areas" value="administration" class="text-amber-500 rounded"> <span class="text-sm">Administración</span> </label> <label class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors"> <input type="checkbox" name="ai_areas" value="services" class="text-amber-500 rounded"> <span class="text-sm">Servicios al Estudiante</span> </label> <label class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors"> <input type="checkbox" name="ai_areas" value="health" class="text-amber-500 rounded"> <span class="text-sm">Salud/Bienestar</span> </label> <label class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors"> <input type="checkbox" name="ai_areas" value="other" class="text-amber-500 rounded"> <span class="text-sm">Otro</span> </label>
+          </div>
+         </div>
+        </div><!-- Specific Needs -->
+        <div class="border-b border-gray-700 pb-6">
+         <h3 class="font-semibold text-lg mb-4 flex items-center gap-2"><span class="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 font-bold text-sm">4</span> Necesidades Específicas</h3>
+         <div><label class="block text-sm font-medium text-gray-300 mb-2">¿Cuáles son tus principales necesidades? *</label> <textarea name="needs" rows="4" placeholder="Describe brevemente los desafíos principales que enfrenta tu institución en relación a la gobernanza de IA..." class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500 resize-none" required></textarea>
+         </div>
+         <div class="mt-6"><label class="block text-sm font-medium text-gray-300 mb-2">¿En cuánto tiempo necesitas comenzar? *</label> <select name="timeline" class="w-full input-field rounded-xl py-3 px-4 text-white" required> <option value="" class="bg-gray-800">Seleccione</option> <option value="immediate" class="bg-gray-800">Urgente (próximas 2 semanas)</option> <option value="month" class="bg-gray-800">Próximo mes</option> <option value="quarter" class="bg-gray-800">Próximo trimestre</option> <option value="semester" class="bg-gray-800">Próximo semestre</option> <option value="flexible" class="bg-gray-800">Flexible</option> </select>
+         </div>
+        </div><!-- Agreement -->
+        <div><label class="flex items-start gap-3 cursor-pointer"> <input type="checkbox" name="consent" class="mt-1 text-amber-500 rounded" required> <span class="text-sm text-gray-400"> Autorizo a CONVERGE-IA a contactarme con la información solicitada y reconozco haber leído la <a href="#" class="text-blue-400 hover:underline">política de privacidad</a>. </span> </label>
+        </div><!-- Submit --> <button type="submit" class="w-full btn-primary py-4 rounded-xl font-semibold text-lg flex items-center justify-center gap-2">
+         <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13" /> <path d="M22 2l-7 20-4-9-9-4 20-7z" />
+         </svg> Enviar Solicitud </button>
+       </form>
+      </div><!-- Info Cards -->
+      <div class="grid md:grid-cols-3 gap-6">
+       <div class="glass-card rounded-2xl p-6">
+        <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center mb-4">
+         <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#4a90d9" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+         </svg>
+        </div>
+        <h3 class="font-semibold mb-2">Respuesta Rápida</h3>
+        <p class="text-gray-400 text-sm">Nos comunicaremos en máximo 5 días hábiles para discutir tus necesidades.</p>
+       </div>
+       <div class="glass-card rounded-2xl p-6">
+        <div class="w-12 h-12 rounded-xl bg-amber-500/20 flex items-center justify-center mb-4">
+         <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /> <circle cx="9" cy="7" r="4" /> <path d="M23 21v-2a4 4 0 0 0-3-3.87" /> <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+         </svg>
+        </div>
+        <h3 class="font-semibold mb-2">Asesoramiento Experto</h3>
+        <p class="text-gray-400 text-sm">Equipo especializado en gobernanza ética de IA con experiencia internacional.</p>
+       </div>
+       <div class="glass-card rounded-2xl p-6">
+        <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center mb-4">
+         <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /> <path d="M12 16v-4" /> <path d="M12 8h.01" />
+         </svg>
+        </div>
+        <h3 class="font-semibold mb-2">Solución Personalizada</h3>
+        <p class="text-gray-400 text-sm">Marco adaptado a tu contexto institucional y necesidades específicas.</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- ========== PAGE: CONTRIBUTE CONTENT ========== -->
+   <section id="page-contribute-content" class="page-section">
+    <div class="pt-24 pb-16 gradient-mesh">
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+       <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-sm mb-6">
+        <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /> <polyline points="14 2 14 8 20 8" /> <path d="M12 18v-4" /> <path d="M9 15h6" />
+        </svg><span>Contribuir Contenido</span>
+       </div>
+       <h1 class="font-display text-4xl sm:text-5xl font-bold mb-6">Sugerir Documentos, Noticias e Información</h1>
+       <p class="text-gray-400 text-lg max-w-3xl mx-auto">¿Tienes un documento relevante, noticia importante o recurso valioso para compartir con la comunidad CONVERGE-IA? Sugierelo aquí. Nuestro equipo editorial lo revisará y lo publicará si cumple con nuestros estándares.</p>
+      </div>
+     </div>
+    </div>
+    <div class="pb-20" style="background-color: var(--secondary-surface);">
+     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8">
+      <div class="glass-card rounded-3xl p-8 md:p-12 mb-8">
+       <h2 class="font-display text-2xl font-bold mb-2 flex items-center gap-3">
+        <svg width="28" height="28" viewbox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19" /> <line x1="5" y1="12" x2="19" y2="12" />
+        </svg> Enviar Sugerencia de Contenido</h2>
+       <p class="text-gray-400 mb-8">Completa el formulario y nuestro equipo revisará tu contribución. Los contenidos seleccionados serán publicados en el repositorio de CONVERGE-IA con los créditos correspondientes.</p>
+       <form id="contribute-form" class="space-y-6"><!-- Contributor Info -->
+        <div class="border-b border-gray-700 pb-6">
+         <h3 class="font-semibold text-lg mb-4 flex items-center gap-2"><span class="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 font-bold text-sm">1</span> Información del Contribuyente</h3>
+         <div class="grid md:grid-cols-2 gap-6">
+          <div><label class="block text-sm font-medium text-gray-300 mb-2">Nombre completo *</label> <input type="text" name="contrib_name" placeholder="Tu nombre" class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500" required>
+          </div>
+          <div><label class="block text-sm font-medium text-gray-300 mb-2">Correo electrónico *</label> <input type="email" name="contrib_email" placeholder="tu@institucion.edu" class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500" required>
+          </div>
+          <div><label class="block text-sm font-medium text-gray-300 mb-2">Institución/Organización</label> <input type="text" name="contrib_org" placeholder="Universidad / Organización" class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500">
+          </div>
+          <div><label class="block text-sm font-medium text-gray-300 mb-2">Cargo/Rol</label> <input type="text" name="contrib_role" placeholder="Ej: Investigador, Docente" class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500">
+          </div>
+         </div>
+        </div><!-- Content Type -->
+        <div class="border-b border-gray-700 pb-6">
+         <h3 class="font-semibold text-lg mb-4 flex items-center gap-2"><span class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold text-sm">2</span> Tipo de Contenido</h3>
+         <div class="grid grid-cols-2 md:grid-cols-4 gap-3"><label class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors border-2 border-transparent hover:border-blue-400"> <input type="radio" name="content_type" value="documento" class="text-green-500" required> <span class="text-sm">📄 Documento</span> </label> <label class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors border-2 border-transparent hover:border-blue-400"> <input type="radio" name="content_type" value="noticia" class="text-green-500"> <span class="text-sm">📰 Noticia</span> </label> <label class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors border-2 border-transparent hover:border-blue-400"> <input type="radio" name="content_type" value="herramienta" class="text-green-500"> <span class="text-sm">🛠️ Herramienta</span> </label> <label class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors border-2 border-transparent hover:border-blue-400"> <input type="radio" name="content_type" value="articulo" class="text-green-500"> <span class="text-sm">✍️ Artículo</span> </label> <label class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors border-2 border-transparent hover:border-blue-400"> <input type="radio" name="content_type" value="estudio" class="text-green-500"> <span class="text-sm">📊 Estudio</span> </label> <label class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors border-2 border-transparent hover:border-blue-400"> <input type="radio" name="content_type" value="guia" class="text-green-500"> <span class="text-sm">📖 Guía</span> </label> <label class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors border-2 border-transparent hover:border-blue-400"> <input type="radio" name="content_type" value="recurso" class="text-green-500"> <span class="text-sm">🎓 Recurso</span> </label> <label class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors border-2 border-transparent hover:border-blue-400"> <input type="radio" name="content_type" value="otro" class="text-green-500"> <span class="text-sm">📌 Otro</span> </label>
+         </div>
+        </div><!-- Content Details -->
+        <div class="border-b border-gray-700 pb-6">
+         <h3 class="font-semibold text-lg mb-4 flex items-center gap-2"><span class="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 font-bold text-sm">3</span> Detalles del Contenido</h3>
+         <div><label class="block text-sm font-medium text-gray-300 mb-2">Título *</label> <input type="text" name="content_title" placeholder="Título del contenido que deseas compartir" class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500" required>
+         </div>
+         <div class="mt-6"><label class="block text-sm font-medium text-gray-300 mb-2">Descripción/Resumen *</label> <textarea name="content_description" rows="4" placeholder="Describe brevemente el contenido: temática principal, relevancia para CONVERGE-IA, datos clave..." class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500 resize-none" required></textarea>
+         </div>
+         <div class="mt-6"><label class="block text-sm font-medium text-gray-300 mb-2">URL o enlace (si aplica)</label> <input type="url" name="content_url" placeholder="https://ejemplo.com/recurso" class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500">
+         </div>
+         <div class="mt-6"><label class="block text-sm font-medium text-gray-300 mb-3">Temas/Áreas relacionadas</label>
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-3"><label class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors"> <input type="checkbox" name="topics" value="etica" class="text-green-500 rounded"> <span class="text-sm">Ética</span> </label> <label class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors"> <input type="checkbox" name="topics" value="gobernanza" class="text-green-500 rounded"> <span class="text-sm">Gobernanza</span> </label> <label class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors"> <input type="checkbox" name="topics" value="regulacion" class="text-green-500 rounded"> <span class="text-sm">Regulación</span> </label> <label class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors"> <input type="checkbox" name="topics" value="derechos" class="text-green-500 rounded"> <span class="text-sm">Derechos Humanos</span> </label> <label class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors"> <input type="checkbox" name="topics" value="sesgo" class="text-green-500 rounded"> <span class="text-sm">Sesgo/Equidad</span> </label> <label class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors"> <input type="checkbox" name="topics" value="educacion" class="text-green-500 rounded"> <span class="text-sm">Educación</span> </label> <label class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors"> <input type="checkbox" name="topics" value="investigacion" class="text-green-500 rounded"> <span class="text-sm">Investigación</span> </label> <label class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors"> <input type="checkbox" name="topics" value="formacion" class="text-green-500 rounded"> <span class="text-sm">Formación</span> </label> <label class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors"> <input type="checkbox" name="topics" value="otro" class="text-green-500 rounded"> <span class="text-sm">Otro</span> </label>
+          </div>
+         </div>
+        </div><!-- Terms -->
+        <div class="space-y-3"><label class="flex items-start gap-3 cursor-pointer p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors"> <input type="checkbox" name="original" class="mt-1 text-green-500 rounded" required> <span class="text-sm text-gray-400"> Confirmo que el contenido es original o que tengo permiso para compartirlo. Reconozco que será publicado bajo licencia Creative Commons Attribution 4.0. </span> </label> <label class="flex items-start gap-3 cursor-pointer p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors"> <input type="checkbox" name="review" class="mt-1 text-green-500 rounded" required> <span class="text-sm text-gray-400"> Entiendo que el contenido será revisado por el equipo editorial de CONVERGE-IA antes de ser publicado. </span> </label> <label class="flex items-start gap-3 cursor-pointer p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors"> <input type="checkbox" name="contact_ok" class="mt-1 text-green-500 rounded" required> <span class="text-sm text-gray-400"> Autorizo a CONVERGE-IA a contactarme si hay preguntas sobre mi contribución o para notificarme sobre su publicación. </span> </label>
+        </div><!-- Submit --> <button type="submit" class="w-full btn-primary py-4 rounded-xl font-semibold text-lg flex items-center justify-center gap-2">
+         <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13" /> <path d="M22 2l-7 20-4-9-9-4 20-7z" />
+         </svg> Enviar Sugerencia </button>
+       </form>
+      </div><!-- Editorial Process -->
+      <div class="mb-8">
+       <h2 class="font-display text-2xl font-bold mb-6">Proceso Editorial</h2>
+       <div class="grid md:grid-cols-4 gap-6">
+        <div class="glass-card rounded-2xl p-6">
+         <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 font-bold">
+           1
+          </div>
+          <h3 class="font-semibold">Recepción</h3>
+         </div>
+         <p class="text-gray-400 text-sm">Tu sugerencia es recibida por nuestro equipo editorial.</p>
+        </div>
+        <div class="glass-card rounded-2xl p-6">
+         <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold">
+           2
+          </div>
+          <h3 class="font-semibold">Revisión</h3>
+         </div>
+         <p class="text-gray-400 text-sm">Se valida relevancia, calidad y alineación con CONVERGE-IA (3-7 días).</p>
+        </div>
+        <div class="glass-card rounded-2xl p-6">
+         <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 font-bold">
+           3
+          </div>
+          <h3 class="font-semibold">Decisión</h3>
+         </div>
+         <p class="text-gray-400 text-sm">Te notificamos si fue aceptado y cuándo será publicado.</p>
+        </div>
+        <div class="glass-card rounded-2xl p-6">
+         <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-400 font-bold">
+           4
+          </div>
+          <h3 class="font-semibold">Publicación</h3>
+         </div>
+         <p class="text-gray-400 text-sm">Tu contenido se publica con créditos en el repositorio.</p>
+        </div>
+       </div>
+      </div><!-- Guidelines -->
+      <div class="glass-card rounded-2xl p-6 border-l-4 border-blue-500">
+       <h3 class="font-display text-xl font-semibold mb-4 flex items-center gap-3">
+        <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#4a90d9" stroke-width="2"><circle cx="12" cy="12" r="10" /> <line x1="12" y1="16" x2="12" y2="12" /> <line x1="12" y1="8" x2="12.01" y2="8" />
+        </svg> Criterios de Aceptación</h3>
+       <ul class="space-y-2 text-gray-400 text-sm">
+        <li class="flex items-start gap-3"><span class="text-blue-400 mt-1">✓</span> <span>Contenido relevante para la gobernanza ética de IA</span></li>
+        <li class="flex items-start gap-3"><span class="text-blue-400 mt-1">✓</span> <span>Información actualizada y de fuentes confiables</span></li>
+        <li class="flex items-start gap-3"><span class="text-blue-400 mt-1">✓</span> <span>Lenguaje claro y profesional</span></li>
+        <li class="flex items-start gap-3"><span class="text-blue-400 mt-1">✓</span> <span>Derechos de autor respetados</span></li>
+        <li class="flex items-start gap-3"><span class="text-blue-400 mt-1">✓</span> <span>Orientación regional (preferentemente iberoamericana)</span></li>
+        <li class="flex items-start gap-3"><span class="text-blue-400 mt-1">✓</span> <span>Evita promoción comercial directa</span></li>
+       </ul>
       </div>
      </div>
     </div>
@@ -1887,6 +2102,34 @@
         this.reset();
       }, 1500);
     });
+
+    // Governance Request Form
+    if (document.getElementById('governance-request-form')) {
+      document.getElementById('governance-request-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        showToast('Enviando solicitud de asesoría...', 'info');
+        
+        setTimeout(() => {
+          showToast('¡Solicitud enviada! Un especialista se comunicará contigo pronto', 'success');
+          this.reset();
+          navigateTo('home');
+        }, 2000);
+      });
+    }
+
+    // Contribute Content Form
+    if (document.getElementById('contribute-form')) {
+      document.getElementById('contribute-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        showToast('Enviando tu contribución...', 'info');
+        
+        setTimeout(() => {
+          showToast('¡Gracias por tu contribución! Será revisada por nuestro equipo editorial', 'success');
+          this.reset();
+          navigateTo('home');
+        }, 2000);
+      });
+    }
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c9b5a2a22e1cc71',t:'MTc3MDM4ODI5Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c9b6e38f6a3a683',t:'MTc3MDM4OTExOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
