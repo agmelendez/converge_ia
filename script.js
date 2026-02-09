@@ -12,11 +12,9 @@ const defaultConfig = {
 
 let config = { ...defaultConfig };
 let currentPage = 'home';
-let membershipType = 'institution';
 
 // ===== UI UPDATE FUNCTION =====
 function updateUI() {
-    // Update text content
     const navBrand = document.getElementById('nav-brand');
     if (navBrand) navBrand.textContent = config.network_name || defaultConfig.network_name;
 
@@ -29,7 +27,6 @@ function updateUI() {
     const heroTagline = document.getElementById('hero-tagline');
     if (heroTagline) heroTagline.textContent = `"${config.tagline || defaultConfig.tagline}"`;
 
-    // Update colors
     const root = document.documentElement;
     root.style.setProperty('--primary-bg', config.primary_color || defaultConfig.primary_color);
     root.style.setProperty('--secondary-surface', config.secondary_color || defaultConfig.secondary_color);
@@ -40,38 +37,27 @@ function updateUI() {
 
 // ===== NAVIGATION =====
 function navigateTo(page) {
-    // Prevent default if called from event handler without preventDefault
-    // (though usually called inline onclick)
-
-    // Update State (URL hash) logic
-    // We only update hash if it's different to avoid loops or redundant history entries
     if (window.location.hash.substring(1) !== page) {
         window.history.pushState(null, '', `#${page}`);
     }
-
     renderPage(page);
 }
 
-// Function to actually render the page changes
 function renderPage(page) {
     if (!page) page = 'home';
 
-    // Hide all pages
     document.querySelectorAll('.page-section').forEach(section => {
         section.classList.remove('active');
     });
 
-    // Show target page
     const targetPage = document.getElementById(`page-${page}`);
     if (targetPage) {
         targetPage.classList.add('active');
         currentPage = page;
 
-        // Scroll to top
         const appContainer = document.getElementById('app-container');
         if (appContainer) appContainer.scrollTop = 0;
 
-        // Update nav links
         document.querySelectorAll('.nav-link').forEach(link => {
             link.classList.remove('active');
             if (link.dataset.page === page) {
@@ -79,7 +65,6 @@ function renderPage(page) {
             }
         });
     } else {
-        // Fallback to home if page not found
         if (page !== 'home') navigateTo('home');
     }
 }
@@ -96,9 +81,6 @@ function toggleMobileMenu() {
         icon.innerHTML = '<line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>';
     }
 }
-
-// ===== MEMBERSHIP TYPE SELECTION =====
-
 
 // ===== TOAST NOTIFICATIONS =====
 function showToast(message, type = 'success') {
@@ -125,23 +107,6 @@ function showToast(message, type = 'success') {
     setTimeout(() => {
         toast.remove();
     }, 3000);
-}
-
-// ===== FORM HANDLERS =====
-// ===== FORM HANDLERS =====
-// Removed Auth Handlers
-
-
-// ===== FORM SUBMISSIONS =====
-// ===== FORM SUBMISSIONS =====
-const loginForm = document.getElementById('login-form');
-if (loginForm) {
-    // Login form removed
-}
-
-const registrationForm = document.getElementById('registration-form');
-if (registrationForm) {
-    // Registration form removed
 }
 
 // ===== FILTER FUNCTIONS =====
@@ -190,10 +155,6 @@ function filterProjects(status) {
 }
 
 // ===== ACTION HANDLERS =====
-function handleResourceAccess() {
-    // Removed auth check
-}
-
 function handleProjectInterest(projectId) {
     showToast('Sending your interest in participating...', 'info');
     setTimeout(() => {
@@ -208,11 +169,10 @@ function handleGovernanceRequest() {
         const subject = 'Accompaniment Request - AI Governance';
         const body = 'I would like to request information about the AI governance accompaniment program for my institution.';
         window.open(`mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`, '_blank');
-        // showToast('Se abrió tu cliente de correo', 'success'); // Browser might block popups or not show success immediately
     }, 500);
 }
 
-// ===== GENERIC FORM HANDLERS =====
+// ===== FORM HANDLERS =====
 const contactForm = document.getElementById('contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', function (e) {
@@ -254,17 +214,12 @@ if (contributeForm) {
     });
 }
 
-
 // ===== INITIALIZATION & HISTORY HANDLING =====
-
-// Handle Back/Forward buttons
 window.addEventListener('popstate', () => {
-    // When history changes (user presses Back), update the UI based on the new hash
     const hash = window.location.hash.substring(1);
     renderPage(hash || 'home');
 });
 
-// Initial load
 document.addEventListener('DOMContentLoaded', () => {
     updateUI();
     const hash = window.location.hash.substring(1);
