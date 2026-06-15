@@ -1,0 +1,2430 @@
+<!doctype html>
+<html lang="en" class="h-full">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CONVERGE-IA | Academic Convergence Network in AI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="script.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&amp;family=Source+Sans+3:wght@300;400;500;600&amp;display=swap"
+    rel="stylesheet">
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-bg: #0a1628;
+      --secondary-surface: #131f35;
+      --text-primary: #e8eef5;
+      --accent-gold: #c9a227;
+      --accent-blue: #4a90d9;
+    }
+
+    .font-display {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    .font-body {
+      font-family: 'Source Sans 3', system-ui, sans-serif;
+    }
+
+    .gradient-mesh {
+      background:
+        radial-gradient(ellipse at 20% 20%, rgba(74, 144, 217, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(201, 162, 39, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(19, 31, 53, 0.8) 0%, transparent 70%);
+    }
+
+    .glass-card {
+      background: rgba(19, 31, 53, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(74, 144, 217, 0.2);
+    }
+
+    .glow-gold {
+      box-shadow: 0 0 30px rgba(201, 162, 39, 0.3);
+    }
+
+    .glow-blue {
+      box-shadow: 0 0 20px rgba(74, 144, 217, 0.3);
+    }
+
+    .nav-link {
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent-gold), var(--accent-blue));
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-gold) 0%, #d4af37 100%);
+      color: var(--primary-bg);
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(201, 162, 39, 0.4);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--accent-blue);
+      color: var(--accent-blue);
+      transition: all 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(74, 144, 217, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .network-node {
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    .network-node:nth-child(2) {
+      animation-delay: 0.5s;
+    }
+
+    .network-node:nth-child(3) {
+      animation-delay: 1s;
+    }
+
+    .network-node:nth-child(4) {
+      animation-delay: 1.5s;
+    }
+
+    .network-node:nth-child(5) {
+      animation-delay: 2s;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 0.4;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .float-animation {
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .fade-in {
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .stagger-1 {
+      animation-delay: 0.1s;
+    }
+
+    .stagger-2 {
+      animation-delay: 0.2s;
+    }
+
+    .stagger-3 {
+      animation-delay: 0.3s;
+    }
+
+    .stagger-4 {
+      animation-delay: 0.4s;
+    }
+
+    .principle-card {
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .principle-card:hover {
+      transform: translateY(-8px) scale(1.02);
+    }
+
+    .timeline-line {
+      background: linear-gradient(180deg, var(--accent-blue), var(--accent-gold));
+    }
+
+    .input-field {
+      background: rgba(10, 22, 40, 0.8);
+      border: 1px solid rgba(74, 144, 217, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .input-field:focus {
+      outline: none;
+      border-color: var(--accent-gold);
+      box-shadow: 0 0 15px rgba(201, 162, 39, 0.2);
+    }
+
+    .page-section {
+      opacity: 0;
+      display: none;
+    }
+
+    .page-section.active {
+      opacity: 1;
+      display: block;
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    .toast {
+      animation: slideIn 0.4s ease-out, fadeOut 0.4s ease-out 2.6s forwards;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+    }
+
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--primary-bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, var(--accent-blue), var(--accent-gold));
+      border-radius: 4px;
+    }
+  </style>
+  <style>
+    @view-transition {
+      navigation: auto;
+    }
+  </style>
+
+</head>
+
+<body class="h-full overflow-hidden font-body" style="background-color: var(--primary-bg); color: var(--text-primary);">
+  <div id="eu-banner" class="bg-[#003399] text-white py-2 px-4 text-xs md:text-sm relative z-[60]">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center gap-4 text-center md:text-left">
+      <div class="flex items-center gap-3 shrink-0">
+        <svg width="45" height="30" viewBox="0 0 270 180" xmlns="http://www.w3.org/2000/svg">
+          <rect width="270" height="180" fill="#003399" />
+          <g fill="#FFCC00">
+            <use xlink:href="#s" y="-60" />
+            <use xlink:href="#s" y="60" />
+            <g id="l">
+              <use xlink:href="#s" x="-60" />
+              <use xlink:href="#s" x="60" />
+            </g>
+            <use xlink:href="#l" transform="rotate(150)" />
+            <use xlink:href="#l" transform="rotate(-150)" />
+            <use xlink:href="#l" transform="rotate(120)" />
+            <use xlink:href="#l" transform="rotate(-120)" />
+            <use xlink:href="#l" transform="rotate(90)" />
+            <use xlink:href="#l" transform="rotate(-90)" />
+            <use xlink:href="#l" transform="rotate(60)" />
+            <use xlink:href="#l" transform="rotate(-60)" />
+            <use xlink:href="#l" transform="rotate(30)" />
+            <use xlink:href="#l" transform="rotate(-30)" />
+          </g>
+          <defs>
+            <g id="s">
+              <g id="c">
+                <path id="t" d="M0,0v1h0.5z" transform="translate(0,-1)rotate(18)" />
+                <use xlink:href="#t" transform="scale(-1,1)" />
+              </g>
+              <g id="a">
+                <use xlink:href="#c" transform="rotate(72)" />
+                <use xlink:href="#c" transform="rotate(144)" />
+              </g>
+              <use xlink:href="#a" transform="scale(-1,1)" />
+            </g>
+          </defs>
+        </svg>
+        <span
+          class="font-semibold uppercase tracking-wider text-[10px] md:text-xs border-l border-white/30 pl-3">Co-funded
+          by<br>the European Union</span>
+      </div>
+      <p class="opacity-90 font-light leading-tight max-w-4xl text-[10px] md:text-xs">
+        Funded by the European Union. Views and opinions expressed are however those of the author(s) only and do not
+        necessarily reflect those of the European Union or the European Education and Culture Executive Agency (EACEA).
+        Neither the European Union nor EACEA can be held responsible for them.
+      </p>
+    </div>
+  </div>
+
+  <div id="app-container" class="flex-1 min-h-0 w-full overflow-y-auto">
+    <!-- Padding added for fixed banner overlapping content if needed, though banner is relative here so it pushes content down naturally if not fixed. Let's make navbar sticky below it. -->
+    <!-- Navigation -->
+    <nav class="sticky top-0 left-0 right-0 z-50 glass-card">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16"><!-- Logo -->
+          <div class="flex items-center gap-3 cursor-pointer" onclick="navigateTo('home')">
+            <div
+              class="w-10 h-10 rounded-lg bg-gradient-to-br from-amber-500 to-blue-500 flex items-center justify-center">
+              <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <circle cx="12" cy="12" r="3" />
+                <circle cx="12" cy="5" r="2" />
+                <circle cx="19" cy="12" r="2" />
+                <circle cx="12" cy="19" r="2" />
+                <circle cx="5" cy="12" r="2" />
+                <line x1="12" y1="7" x2="12" y2="9" />
+                <line x1="17" y1="12" x2="15" y2="12" />
+                <line x1="12" y1="15" x2="12" y2="17" />
+                <line x1="9" y1="12" x2="7" y2="12" />
+              </svg>
+            </div>
+            <!-- Added Project Logo -->
+            <img src="LogoProjecto.png" alt="Project Logo" class="h-10 w-auto ml-2 rounded-lg">
+            <span id="nav-brand" class="font-display font-semibold text-lg ml-2">CONVERGE-IA</span>
+          </div><!-- Desktop Navigation -->
+          <div class="hidden md:flex items-center gap-8"><button onclick="navigateTo('home')"
+              class="nav-link text-sm font-medium active" data-page="home">Home</button> <button
+              onclick="navigateTo('about')" class="nav-link text-sm font-medium" data-page="about">About</button>
+            <button onclick="navigateTo('objectives')" class="nav-link text-sm font-medium"
+              data-page="objectives">Objectives</button> <button onclick="navigateTo('resources')"
+              class="nav-link text-sm font-medium" data-page="resources">Resources</button> <button
+              onclick="navigateTo('projects')" class="nav-link text-sm font-medium"
+              data-page="projects">Projects</button> <button onclick="navigateTo('contact')"
+              class="nav-link text-sm font-medium" data-page="contact">Contact</button> <button
+              onclick="navigateTo('join')" class="btn-primary px-4 py-2 rounded-lg text-sm font-semibold">Join</button>
+          </div><!-- Mobile Menu Button --> <button onclick="toggleMobileMenu()"
+            class="md:hidden p-2 rounded-lg hover:bg-white/10">
+            <svg id="menu-icon" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg></button>
+        </div>
+      </div><!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden glass-card border-t border-white/10">
+        <div class="px-4 py-4 space-y-3"><button onclick="navigateTo('home'); toggleMobileMenu();"
+            class="block w-full text-left px-3 py-2 rounded-lg hover:bg-white/10">Home</button> <button
+            onclick="navigateTo('about'); toggleMobileMenu();"
+            class="block w-full text-left px-3 py-2 rounded-lg hover:bg-white/10">About</button> <button
+            onclick="navigateTo('objectives'); toggleMobileMenu();"
+            class="block w-full text-left px-3 py-2 rounded-lg hover:bg-white/10">Objectives</button> <button
+            onclick="navigateTo('resources'); toggleMobileMenu();"
+            class="block w-full text-left px-3 py-2 rounded-lg hover:bg-white/10">Resources</button> <button
+            onclick="navigateTo('projects'); toggleMobileMenu();"
+            class="block w-full text-left px-3 py-2 rounded-lg hover:bg-white/10">Projects</button> <button
+            onclick="navigateTo('contact'); toggleMobileMenu();"
+            class="block w-full text-left px-3 py-2 rounded-lg hover:bg-white/10">Contact</button> <button
+            onclick="navigateTo('join'); toggleMobileMenu();"
+            class="btn-primary w-full px-4 py-2 rounded-lg text-sm font-semibold">Join the Network</button>
+        </div>
+      </div>
+    </nav><!-- Toast Container -->
+    <div id="toast-container" class="fixed top-20 right-4 z-50"></div><!-- ========== PAGE: HOME ========== -->
+    <section id="page-home" class="page-section active"><!-- Hero Section -->
+      <div class="relative min-h-screen gradient-mesh flex items-center pt-16"><!-- Network Background Animation -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+          <svg class="absolute w-full h-full opacity-20" viewbox="0 0 1000 600">
+            <defs>
+              <lineargradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#4a90d9" />
+                <stop offset="100%" stop-color="#c9a227" />
+              </lineargradient>
+            </defs> <!-- Network Lines -->
+            <line x1="100" y1="150" x2="300" y2="250" stroke="url(#lineGrad)" stroke-width="1" opacity="0.5" />
+            <line x1="300" y1="250" x2="500" y2="200" stroke="url(#lineGrad)" stroke-width="1" opacity="0.5" />
+            <line x1="500" y1="200" x2="700" y2="300" stroke="url(#lineGrad)" stroke-width="1" opacity="0.5" />
+            <line x1="700" y1="300" x2="900" y2="180" stroke="url(#lineGrad)" stroke-width="1" opacity="0.5" />
+            <line x1="200" y1="400" x2="400" y2="350" stroke="url(#lineGrad)" stroke-width="1" opacity="0.3" />
+            <line x1="400" y1="350" x2="600" y2="450" stroke="url(#lineGrad)" stroke-width="1" opacity="0.3" />
+            <line x1="600" y1="450" x2="800" y2="380" stroke="url(#lineGrad)" stroke-width="1" opacity="0.3" />
+            <!-- Network Nodes -->
+            <circle class="network-node" cx="100" cy="150" r="8" fill="#4a90d9" />
+            <circle class="network-node" cx="300" cy="250" r="12" fill="#c9a227" />
+            <circle class="network-node" cx="500" cy="200" r="10" fill="#4a90d9" />
+            <circle class="network-node" cx="700" cy="300" r="14" fill="#c9a227" />
+            <circle class="network-node" cx="900" cy="180" r="8" fill="#4a90d9" />
+            <circle class="network-node" cx="200" cy="400" r="6" fill="#c9a227" />
+            <circle class="network-node" cx="400" cy="350" r="10" fill="#4a90d9" />
+            <circle class="network-node" cx="600" cy="450" r="8" fill="#c9a227" />
+            <circle class="network-node" cx="800" cy="380" r="12" fill="#4a90d9" />
+          </svg>
+        </div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div class="grid lg:grid-cols-2 gap-12 items-center"><!-- Hero Content -->
+            <div class="text-center lg:text-left">
+              <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-sm mb-6 fade-in"><span
+                  class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span> <span>Erasmus+ Ethical AI
+                  Project</span>
+              </div>
+              <h1 id="hero-title"
+                class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-4 fade-in stagger-1">
+                Academic Convergence Network in <span
+                  class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-blue-400">Artificial
+                  Intelligence</span>
+              </h1>
+              <p id="hero-tagline" class="text-xl sm:text-2xl text-gray-300 font-light mb-8 fade-in stagger-2">"Shared
+                knowledge with responsible AI"</p>
+              <p class="text-gray-400 text-lg mb-10 max-w-xl fade-in stagger-3">An Erasmus+ funded academic network
+                fostering ethical AI governance, research collaboration, and talent formation across Ibero-America.
+              </p>
+              <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start fade-in stagger-4"><button
+                  id="hero-join-btn" onclick="navigateTo('join')"
+                  class="btn-primary px-8 py-4 rounded-xl font-semibold text-lg flex items-center justify-center gap-2">
+                  <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                    <circle cx="8.5" cy="7" r="4" />
+                    <line x1="20" y1="8" x2="20" y2="14" />
+                    <line x1="23" y1="11" x2="17" y2="11" />
+                  </svg><span>Join the Network</span> </button> <button id="hero-login-btn"
+                  onclick="navigateTo('about')"
+                  class="btn-secondary px-8 py-4 rounded-xl font-semibold text-lg flex items-center justify-center gap-2">
+                  <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 16v-4" />
+                    <path d="M12 8h.01" />
+                  </svg><span>Learn More</span> </button>
+              </div>
+            </div><!-- Hero Visual -->
+            <div class="hidden lg:flex justify-center float-animation">
+              <div class="relative w-80 h-80"><!-- Central AI Brain Icon -->
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="w-48 h-48 rounded-full glass-card glow-gold flex items-center justify-center">
+                    <svg width="80" height="80" viewbox="0 0 24 24" fill="none" stroke="url(#heroGrad)"
+                      stroke-width="1.5">
+                      <defs>
+                        <lineargradient id="heroGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stop-color="#c9a227" />
+                          <stop offset="100%" stop-color="#4a90d9" />
+                        </lineargradient>
+                      </defs>
+                      <path d="M12 2a8 8 0 0 0-8 8c0 3.4 2.1 6.3 5 7.5V22h6v-4.5c2.9-1.2 5-4.1 5-7.5a8 8 0 0 0-8-8z" />
+                      <path d="M9 10h.01M15 10h.01" />
+                      <path d="M9 14c.8 1 2 1.5 3 1.5s2.2-.5 3-1.5" />
+                      <circle cx="5" cy="6" r="2" />
+                      <circle cx="19" cy="6" r="2" />
+                      <line x1="6.5" y1="7.5" x2="8" y2="9" />
+                      <line x1="17.5" y1="7.5" x2="16" y2="9" />
+                    </svg>
+                  </div>
+                </div><!-- Orbiting Elements -->
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-2 network-node">
+                  <div
+                    class="w-12 h-12 rounded-full bg-blue-500/20 border border-blue-400 flex items-center justify-center">
+                    <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="#4a90d9" stroke-width="2">
+                      <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                      <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                    </svg>
+                  </div>
+                </div>
+                <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-2 network-node"
+                  style="animation-delay: 1s;">
+                  <div
+                    class="w-12 h-12 rounded-full bg-amber-500/20 border border-amber-400 flex items-center justify-center">
+                    <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2">
+                      <circle cx="12" cy="12" r="10" />
+                      <line x1="2" y1="12" x2="22" y2="12" />
+                      <path
+                        d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                    </svg>
+                  </div>
+                </div>
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 network-node"
+                  style="animation-delay: 0.5s;">
+                  <div
+                    class="w-12 h-12 rounded-full bg-blue-500/20 border border-blue-400 flex items-center justify-center">
+                    <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="#4a90d9" stroke-width="2">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                    </svg>
+                  </div>
+                </div>
+                <div class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 network-node"
+                  style="animation-delay: 1.5s;">
+                  <div
+                    class="w-12 h-12 rounded-full bg-amber-500/20 border border-amber-400 flex items-center justify-center">
+                    <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                      <circle cx="9" cy="7" r="4" />
+                      <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- What is CONVERGE-IA -->
+      <div class="py-24" style="background-color: var(--secondary-surface);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4">What is <span
+                class="text-amber-400">CONVERGE-IA</span>?</h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-amber-400 to-blue-400 mx-auto rounded-full"></div>
+          </div>
+          <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+              <p class="text-lg text-gray-300 leading-relaxed">CONVERGE-IA is an academic network that brings together
+                universities, research centers, and institutions across Ibero-America to promote the ethical development
+                and governance of artificial intelligence.</p>
+              <p class="text-gray-400 leading-relaxed">Co-funded by the Erasmus+ programme of the European Union, the
+                network focuses on building regional capabilities for responsible AI through collaboration, training,
+                and applied research.</p>
+              <p class="text-gray-400 leading-relaxed">Our goal is to strengthen multistakeholder alliances between
+                academia, government, industry, and civil society to ensure AI serves communities with transparency,
+                fairness, and respect for human rights.</p>
+            </div>
+            <div class="glass-card rounded-2xl p-8 glow-blue">
+              <div class="flex items-center gap-4 mb-6">
+                <div
+                  class="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-500/20 to-blue-500/20 flex items-center justify-center">
+                  <svg width="28" height="28" viewbox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-display text-xl font-semibold">Our Mission</h3>
+                  <p class="text-gray-400 text-sm"></p>
+                </div>
+              </div>
+              <p class="text-gray-300 italic border-l-4 border-amber-400 pl-4">"To foster a collaborative ecosystem of
+                academic institutions committed to the ethical governance of artificial intelligence, ensuring
+                technology serves human well-being and regional development."</p>
+            </div>
+          </div>
+        </div>
+      </div><!-- Why a Network -->
+      <div class="py-24 gradient-mesh">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4">Why an AI Academic Network?</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">Artificial intelligence is profoundly transforming our societies.
+              Academia has a fundamental role to play.</p>
+            <div class="w-24 h-1 bg-gradient-to-r from-amber-400 to-blue-400 mx-auto rounded-full mt-6"></div>
+          </div>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"><!-- Card 1 -->
+            <div class="glass-card rounded-2xl p-6 principle-card">
+              <div class="w-12 h-12 rounded-xl bg-red-500/20 flex items-center justify-center mb-4">
+                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2">
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                  <line x1="12" y1="9" x2="12" y2="13" />
+                  <line x1="12" y1="17" x2="12.01" y2="17" />
+                </svg>
+              </div>
+              <h3 class="font-display text-lg font-semibold mb-2">Emerging Risks</h3>
+              <p class="text-gray-400 text-sm">Without clear ethical frameworks, AI can amplify biases, violate rights,
+                and deepen existing inequalities.</p>
+            </div><!-- Card 2 -->
+            <div class="glass-card rounded-2xl p-6 principle-card">
+              <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center mb-4">
+                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#4a90d9" stroke-width="2">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="2" y1="12" x2="22" y2="12" />
+                  <path
+                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                </svg>
+              </div>
+              <h3 class="font-display text-lg font-semibold mb-2">Digital Divide</h3>
+              <p class="text-gray-400 text-sm">Latin America requires developing its own capabilities to avoid depending
+                on external solutions that ignore its context.</p>
+            </div><!-- Card 3 -->
+            <div class="glass-card rounded-2xl p-6 principle-card">
+              <div class="w-12 h-12 rounded-xl bg-amber-500/20 flex items-center justify-center mb-4">
+                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                  <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                </svg>
+              </div>
+              <h3 class="font-display text-lg font-semibold mb-2">Role of Academia</h3>
+              <p class="text-gray-400 text-sm">Universities are privileged spaces for critical reflection, independent
+                research, and talent formation.</p>
+            </div><!-- Card 4 -->
+            <div class="glass-card rounded-2xl p-6 principle-card">
+              <div class="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center mb-4">
+                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </div>
+              <h3 class="font-display text-lg font-semibold mb-2">Regional Cooperation</h3>
+              <p class="text-gray-400 text-sm">No institution can address these challenges alone. Collaboration
+                multiplies capabilities and impact.</p>
+            </div><!-- Card 5 -->
+            <div class="glass-card rounded-2xl p-6 principle-card">
+              <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center mb-4">
+                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2">
+                  <path d="M12 20h9" />
+                  <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+                </svg>
+              </div>
+              <h3 class="font-display text-lg font-semibold mb-2">Public Policies</h3>
+              <p class="text-gray-400 text-sm">Academia must inform and participate in the design of evidence-based AI
+                regulations and policies.</p>
+            </div><!-- Card 6 -->
+            <div class="glass-card rounded-2xl p-6 principle-card">
+              <div class="w-12 h-12 rounded-xl bg-pink-500/20 flex items-center justify-center mb-4">
+                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="2">
+                  <path
+                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                </svg>
+              </div>
+              <h3 class="font-display text-lg font-semibold mb-2">Human Impact</h3>
+              <p class="text-gray-400 text-sm">AI must serve people and communities, respecting their dignity, rights,
+                and cultural diversity.</p>
+            </div>
+          </div>
+        </div>
+      </div><!-- Guiding Principles -->
+      <div class="py-24" style="background-color: var(--secondary-surface);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4">Guiding Principles</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">The values that guide all our actions and decisions</p>
+            <div class="w-24 h-1 bg-gradient-to-r from-amber-400 to-blue-400 mx-auto rounded-full mt-6"></div>
+          </div>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"><!-- Ética -->
+            <div class="glass-card rounded-2xl p-8 text-center principle-card glow-gold">
+              <div
+                class="w-20 h-20 rounded-full bg-gradient-to-br from-amber-500/30 to-amber-600/10 flex items-center justify-center mx-auto mb-6">
+                <svg width="40" height="40" viewbox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="1.5">
+                  <path d="M12 3v18" />
+                  <path d="M5 6l7-3 7 3" />
+                  <path d="M5 6v8a7 7 0 0 0 7 7 7 7 0 0 0 7-7V6" />
+                  <circle cx="12" cy="11" r="3" />
+                </svg>
+              </div>
+              <h3 class="font-display text-xl font-semibold mb-3 text-amber-400">Ethics</h3>
+              <p class="text-gray-400 text-sm">Commitment to moral principles that guarantee the responsible and
+                beneficial development of AI.</p>
+            </div><!-- Inclusión -->
+            <div class="glass-card rounded-2xl p-8 text-center principle-card">
+              <div
+                class="w-20 h-20 rounded-full bg-gradient-to-br from-blue-500/30 to-blue-600/10 flex items-center justify-center mx-auto mb-6">
+                <svg width="40" height="40" viewbox="0 0 24 24" fill="none" stroke="#4a90d9" stroke-width="1.5">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M8 12h8" />
+                  <path d="M12 8v8" />
+                  <circle cx="12" cy="12" r="4" />
+                </svg>
+              </div>
+              <h3 class="font-display text-xl font-semibold mb-3 text-blue-400">Inclusion</h3>
+              <p class="text-gray-400 text-sm">Ensure that the benefits of AI reach all people, without discrimination
+                or exclusion.</p>
+            </div><!-- Transparencia -->
+            <div class="glass-card rounded-2xl p-8 text-center principle-card">
+              <div
+                class="w-20 h-20 rounded-full bg-gradient-to-br from-green-500/30 to-green-600/10 flex items-center justify-center mx-auto mb-6">
+                <svg width="40" height="40" viewbox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="1.5">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 16v-4" />
+                  <path d="M12 8h.01" />
+                  <path d="M8 12h8" />
+                </svg>
+              </div>
+              <h3 class="font-display text-xl font-semibold mb-3 text-green-400">Transparency</h3>
+              <p class="text-gray-400 text-sm">Explainable, auditable, and understandable AI systems to generate trust
+                and accountability.</p>
+            </div><!-- IA Centrada en Personas -->
+            <div class="glass-card rounded-2xl p-8 text-center principle-card">
+              <div
+                class="w-20 h-20 rounded-full bg-gradient-to-br from-purple-500/30 to-purple-600/10 flex items-center justify-center mx-auto mb-6">
+                <svg width="40" height="40" viewbox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="1.5">
+                  <circle cx="12" cy="7" r="4" />
+                  <path d="M5 21v-2a7 7 0 0 1 14 0v2" />
+                  <path d="M12 11v4" />
+                  <path d="M9 15h6" />
+                </svg>
+              </div>
+              <h3 class="font-display text-xl font-semibold mb-3 text-purple-400">Human-Centered AI</h3>
+            </div>
+          </div>
+        </div>
+      </div><!-- Partners / Logos -->
+        <div class="py-16 gradient-mesh">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+              <h2 class="font-display text-2xl font-bold mb-4">Our Partners</h2>
+              <p class="text-gray-400">The consortium of institutions driving the network</p>
+            </div>
+
+            <!-- Consortium Logos Image -->
+            <div class="flex justify-center items-center mb-12">
+              <div class="glass-card rounded-2xl p-6 md:p-8 max-w-4xl w-full border border-purple-500/20 hover:border-purple-400/40 transition-colors duration-300">
+                <img src="LogosProyecto.png" alt="Consortium Partners Logos" class="w-full h-auto object-contain mx-auto rounded-lg filter drop-shadow-[0_0_15px_rgba(168,85,247,0.15)]">
+              </div>
+            </div>
+
+            <!-- Ethical AI Project Link -->
+            <div class="flex justify-center">
+              <a href="https://www.ethicalaiucr.info/" target="_blank" rel="noopener noreferrer"
+                class="glass-card rounded-xl px-8 py-6 flex items-center gap-4 hover:scale-105 transition-transform group cursor-pointer border border-purple-500/30 hover:border-purple-400">
+                <div
+                  class="w-14 h-14 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center group-hover:shadow-[0_0_20px_rgba(168,85,247,0.5)] transition-shadow">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                    <path d="M2 17l10 5 10-5" />
+                    <path d="M2 12l10 5 10-5" />
+                  </svg>
+                </div>
+                <div class="text-left">
+                  <p class="font-semibold text-lg group-hover:text-purple-300 transition-colors">Ethical AI Project</p>
+                  <p class="text-sm text-gray-400 group-hover:text-gray-300">Visit the official project portal &rarr;
+                  </p>
+                </div>
+              </a>
+            </div>
+
+          </div>
+        </div><!-- CTA Section -->
+        <div class="py-24" style="background-color: var(--secondary-surface);">
+          <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="font-display text-3xl sm:text-4xl font-bold mb-6">Ready to be part of the change?</h2>
+            <p class="text-gray-400 text-lg mb-10 max-w-2xl mx-auto">Join a community of institutions committed to the
+              ethical and responsible development of artificial intelligence in our region.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center"><button onclick="navigateTo('join')"
+                class="btn-primary px-10 py-4 rounded-xl font-semibold text-lg"> Request Membership </button> <button
+                onclick="navigateTo('about')" class="btn-secondary px-10 py-4 rounded-xl font-semibold text-lg"> Learn
+                More </button>
+            </div>
+          </div>
+        </div>
+    </section><!-- ========== PAGE: ABOUT ========== -->
+    <section id="page-about" class="page-section">
+      <div class="pt-24 pb-16 gradient-mesh">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><!-- Header -->
+          <div class="text-center mb-16">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-sm mb-6">
+              <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 16v-4" />
+                <path d="M12 8h.01" />
+              </svg><span>About CONVERGE-IA</span>
+            </div>
+            <h1 class="font-display text-4xl sm:text-5xl font-bold mb-6">About the Network</h1>
+            <p class="text-gray-400 text-lg max-w-3xl mx-auto">International context, conceptual foundations, and the
+              strategic role of Latin America in the ethical governance of artificial intelligence.</p>
+          </div>
+        </div>
+      </div><!-- International Context -->
+      <div class="py-20" style="background-color: var(--secondary-surface);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid lg:grid-cols-2 gap-16 items-start">
+            <div>
+              <h2 class="font-display text-3xl font-bold mb-6"><span class="text-amber-400">International
+                  Background</span></h2>
+              <div class="prose prose-invert max-w-none text-gray-300">
+                <p>UNESCO adopted in 2021 the first Recommendation on the Ethics of Artificial Intelligence,
+                  establishing universal principles for the development and use of AI.</p>
+                <p>The OECD has promoted principles of trustworthy AI, while the Ibero-American Charter on AI adapts
+                  these frameworks to the Latin American regional context.</p>
+              </div>
+            </div>
+            <div class="space-y-4"><!-- UNESCO Card -->
+              <div class="glass-card rounded-xl p-6 flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center flex-shrink-0">
+                  <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#4a90d9" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M2 12h20" />
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10" />
+                    <path d="M12 2a15.3 15.3 0 0 0-4 10 15.3 15.3 0 0 0 4 10" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-lg mb-1">UNESCO</h3>
+                  <p class="text-gray-400 text-sm">Recommendation on the Ethics of AI (2021) - Universal framework for human-centered AI.</p>
+                </div>
+              </div><!-- OECD Card -->
+              <div class="glass-card rounded-xl p-6 flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-green-500/20 flex items-center justify-center flex-shrink-0">
+                  <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2">
+                    <path d="M3 3v18h18" />
+                    <path d="M18 17V9" />
+                    <path d="M13 17V5" />
+                    <path d="M8 17v-3" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-lg mb-1">OECD</h3>
+                  <p class="text-gray-400 text-sm">Principles of Trustworthy AI - Guidelines for responsible and transparent AI systems.</p>
+                </div>
+              </div><!-- Ibero-American Charter Card -->
+              <div class="glass-card rounded-xl p-6 flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-amber-500/20 flex items-center justify-center flex-shrink-0">
+                  <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                    <line x1="16" y1="13" x2="8" y2="13" />
+                    <line x1="16" y1="17" x2="8" y2="17" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-lg mb-1">Ibero-American Charter on AI</h3>
+                  <p class="text-gray-400 text-sm">Regional adaptation of ethical principles for the Ibero-American context.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- Latin America Role -->
+      <div class="py-20 gradient-mesh">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-12">
+            <h2 class="font-display text-3xl font-bold mb-4">The Role of <span class="text-blue-400">Latin America</span></h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-amber-400 to-blue-400 mx-auto rounded-full"></div>
+          </div>
+          <div class="glass-card rounded-2xl p-8 md:p-12 max-w-4xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-8">
+              <div class="space-y-4">
+                <div class="flex items-start gap-3">
+                  <div class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                    <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="#4a90d9" stroke-width="2">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </div>
+                  <p class="text-gray-300">Opportunity to define own regulatory frameworks that reflect regional values and needs.</p>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                    <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="#4a90d9" stroke-width="2">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </div>
+                  <p class="text-gray-300">Potential to develop AI solutions that address specific local problems.</p>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                    <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="#4a90d9" stroke-width="2">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </div>
+                  <p class="text-gray-300">Need to train human talent in the development and ethical governance of AI.</p>
+                </div>
+              </div>
+              <div class="space-y-4">
+                <div class="flex items-start gap-3">
+                  <div class="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                    <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </div>
+                  <p class="text-gray-300">Importance of preserving cultural and linguistic diversity in AI systems.</p>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                    <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </div>
+                  <p class="text-gray-300">Building inclusive and socially responsible innovation ecosystems.</p>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                    <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </div>
+                  <p class="text-gray-300">Strengthening South-South cooperation in research and technological development.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- Role of Academia -->
+      <div class="py-20" style="background-color: var(--secondary-surface);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class="order-2 lg:order-1">
+              <div class="glass-card rounded-2xl p-8 glow-blue">
+                <div class="space-y-6">
+                  <div class="flex items-center gap-4">
+                    <div
+                      class="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
+                      <svg width="28" height="28" viewbox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                        <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 class="font-display text-xl font-semibold">University and Society</h3>
+                      <p class="text-gray-400 text-sm">A historic commitment</p>
+                    </div>
+                  </div>
+                  <div class="border-l-4 border-blue-400 pl-4 py-2">
+                    <p class="text-gray-300 italic">"Universities have the responsibility to lead ethical reflection on emerging technologies and train citizens capable of participating in decisions that affect the future of their communities."</p>
+                  </div>
+                  <div class="grid grid-cols-2 gap-4">
+                    <div class="text-center p-4 rounded-lg bg-white/5">
+                      <p class="text-2xl font-bold text-amber-400">0</p>
+                      <p class="text-sm text-gray-400">Researchers</p>
+                    </div>
+                    <div class="text-center p-4 rounded-lg bg-white/5">
+                      <p class="text-2xl font-bold text-blue-400">0</p>
+                      <p class="text-sm text-gray-400">Institutions</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="order-1 lg:order-2">
+              <h2 class="font-display text-3xl font-bold mb-6">The Role of <span class="text-amber-400">Academia</span>
+              </h2>
+              <div class="prose prose-invert max-w-none text-gray-300">
+                <p class="text-gray-400">Higher education institutions are privileged spaces to address the ethical
+                  challenges of artificial intelligence from multiple perspectives.</p>
+                <p class="mt-4">They have the capacity to convene diverse actors and foster the interdisciplinary
+                  dialogue necessary for effective governance.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  <!-- Timeline Section -->
+  <div class="py-20 gradient-mesh">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="font-display text-3xl font-bold mb-4">Evolution of the Ethical Framework</h2>
+        <p class="text-gray-400">Key milestones in international AI governance</p>
+      </div>
+      <div class="relative"><!-- Timeline Line -->
+        <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full timeline-line rounded-full"></div>
+        <!-- Timeline Items -->
+        <div class="space-y-12"><!-- Item 1 -->
+          <div class="relative flex items-center justify-between">
+            <div class="glass-card p-4 rounded-xl border-l-4 border-amber-400 relative">
+              <div class="absolute -left-[45px] top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-amber-400"></div>
+              <p class="text-amber-400 font-semibold">2019</p>
+              <h4 class="font-semibold mb-1">OECD Principles</h4>
+              <p class="text-gray-400 text-sm">First international principles for trustworthy AI.</p>
+            </div>
+            <div class="w-5/12"></div>
+          </div><!-- Item 2 -->
+          <div class="relative flex items-center justify-between">
+            <div class="w-5/12"></div>
+            <div class="glass-card p-4 rounded-xl border-l-4 border-blue-400 relative">
+              <div class="absolute -left-[45px] top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-blue-400"></div>
+              <p class="text-blue-400 font-semibold">2021</p>
+              <h4 class="font-semibold mb-1">UNESCO Recommendation</h4>
+              <p class="text-gray-400 text-sm">First global normative instrument on AI ethics.</p>
+            </div>
+          </div>
+        </div><!-- Item 3 -->
+        <div class="relative flex items-center justify-between">
+          <div class="glass-card p-4 rounded-xl border-l-4 border-green-400 relative">
+            <div class="absolute -left-[45px] top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-green-400"></div>
+            <p class="text-green-400 font-semibold">2023</p>
+            <h4 class="font-semibold mb-1">Ibero-American Charter</h4>
+            <p class="text-gray-400 text-sm">Regional consensus on AI centered on human rights.</p>
+          </div>
+          <div class="w-5/12"></div>
+        </div><!-- Item 4 -->
+        <div class="relative flex items-center justify-between">
+          <div class="w-5/12"></div>
+          <div class="glass-card p-4 rounded-xl border-l-4 border-purple-400 relative">
+            <div
+              class="absolute -left-[45px] top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-purple-400 ring-4 ring-purple-900">
+            </div>
+            <p class="text-purple-400 font-semibold">2024</p>
+            <h4 class="font-semibold mb-1">CONVERGE-IA</h4>
+            <p class="text-gray-400 text-sm">Foundation of the pioneering academic network in the region.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- ENIA-CR Connection -->
+  <div class="py-20" style="background-color: var(--secondary-surface);">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="glass-card rounded-2xl p-8 md:p-12 glow-gold">
+        <div class="flex flex-col md:flex-row items-start gap-8">
+          <div
+            class="w-20 h-20 rounded-2xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center flex-shrink-0">
+            <svg width="40" height="40" viewbox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <path d="M9 15l2 2 4-4" />
+            </svg>
+          </div>
+          <div>
+            <h2 class="font-display text-2xl font-bold mb-4">Linkage with Public Policies</h2>
+            <p class="text-gray-300 mb-4">CONVERGE-IA maintains an active dialogue with national AI governance
+              initiatives, such as the <strong class="text-amber-400">National Artificial Intelligence Strategy of Costa
+                Rica (ENIA-CR)</strong>, contributing technical and academic inputs.</p>
+            <p class="text-gray-400">This articulation allows academic advancements to inform public policies, while government needs guide the network's applied research.</p>
+            <div class="mt-6 flex flex-wrap gap-3"><span
+                class="px-3 py-1 rounded-full text-xs font-medium bg-amber-500/20 text-amber-400">Technical Advice</span> <span
+                class="px-3 py-1 rounded-full text-xs font-medium bg-blue-500/20 text-blue-400">Applied Research</span> <span
+                class="px-3 py-1 rounded-full text-xs font-medium bg-green-500/20 text-green-400">Training</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- CTA -->
+  <div class="py-16 gradient-mesh">
+    <div class="glass-card p-6 rounded-xl text-center bg-gradient-to-br from-blue-900/20 to-transparent">
+      <h2 class="font-display text-2xl font-bold mb-4">Want to know our objectives?</h2><button
+        onclick="navigateTo('objectives')" class="btn-primary px-8 py-3 rounded-xl font-semibold"> View Objectives and
+        Action Areas → </button>
+    </div>
+  </div>
+  </section><!-- ========== PAGE: OBJECTIVES ========== -->
+  <section id="page-objectives" class="page-section">
+    <div class="pt-24 pb-16 gradient-mesh">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-sm mb-6">
+            <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="#4a90d9" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 16v-4" />
+              <path d="M12 8h.01" />
+            </svg><span>Our Agenda</span>
+          </div>
+          <h1 class="font-display text-4xl sm:text-5xl font-bold mb-6">Objectives and Action Areas</h1>
+          <p class="text-gray-400 text-lg max-w-3xl mx-auto">The strategic commitments and lines of work that guide
+            CONVERGE-IA activities.</p>
+        </div>
+      </div>
+    </div><!-- Objectives -->
+    <div class="py-20" style="background-color: var(--secondary-surface);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="font-display text-3xl font-bold mb-4">Strategic <span class="text-amber-400">Objectives</span>
+          </h2>
+          <div class="w-20 h-1 bg-amber-400 rounded-full mb-8"></div>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"><!-- Objective 1 -->
+            <div class="glass-card rounded-2xl p-6 glow-amber hover:scale-[1.02] transition-transform duration-300">
+              <div class="w-12 h-12 rounded-xl bg-amber-500/20 flex items-center justify-center mb-4">
+                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </div>
+              <h3 class="font-display text-lg font-semibold mb-2">Academic Exchange</h3>
+              <p class="text-gray-400 text-sm">Facilitate the mobility of researchers, teachers, and students between
+                member institutions to strengthen shared capabilities.</p>
+            </div><!-- Objective 2 -->
+            <div class="glass-card rounded-2xl p-6 glow-amber hover:scale-[1.02] transition-transform duration-300">
+              <div class="w-12 h-12 rounded-xl bg-amber-500/20 flex items-center justify-center mb-4">
+                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2">
+                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                </svg>
+              </div>
+              <h3 class="font-display text-lg font-semibold mb-2">Training in Ethical AI</h3>
+              <p class="text-gray-400 text-sm">Develop curricular programs and educational resources on AI ethics
+                adapted to the Latin American context.</p>
+            </div><!-- Objective 3 -->
+            <div class="glass-card rounded-2xl p-6 glow-amber hover:scale-[1.02] transition-transform duration-300">
+              <div class="w-12 h-12 rounded-xl bg-amber-500/20 flex items-center justify-center mb-4">
+                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2">
+                  <circle cx="11" cy="11" r="8" />
+                  <path d="M21 21l-4.35-4.35" />
+                </svg>
+              </div>
+              <h3 class="font-display text-lg font-semibold mb-2">Applied Research</h3>
+              <p class="text-gray-400 text-sm">Promote joint projects that address local problems using AI in a
+                responsible and sustainable manner.</p>
+            </div><!-- Objective 4 -->
+            <div class="glass-card rounded-2xl p-6 glow-amber hover:scale-[1.02] transition-transform duration-300">
+              <div class="w-12 h-12 rounded-xl bg-amber-500/20 flex items-center justify-center mb-4">
+                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+              </div>
+              <h3 class="font-display text-lg font-semibold mb-2">Governance and Policies</h3>
+              <p class="text-gray-400 text-sm">Contribute with evidence and technical recommendations to the formulation
+                of public policies on AI in the region.</p>
+            </div><!-- Objective 5 -->
+            <div class="glass-card rounded-2xl p-6 glow-amber hover:scale-[1.02] transition-transform duration-300">
+              <div class="w-12 h-12 rounded-xl bg-amber-500/20 flex items-center justify-center mb-4">
+                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="2" y1="12" x2="22" y2="12" />
+                  <path
+                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                </svg>
+              </div>
+              <h3 class="font-display text-lg font-semibold mb-2">Multistakeholder Alliances</h3>
+              <p class="text-gray-400 text-sm">Establish collaboration bridges between academia, government, industry,
+                and civil society.</p>
+            </div><!-- Objective 6 -->
+            <div class="glass-card rounded-2xl p-6 glow-amber hover:scale-[1.02] transition-transform duration-300">
+              <div class="w-12 h-12 rounded-xl bg-amber-500/20 flex items-center justify-center mb-4">
+                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2">
+                  <path
+                    d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3" />
+                </svg>
+              </div>
+              <h3 class="font-display text-lg font-semibold mb-2">Trust Ecosystem</h3>
+              <p class="text-gray-400 text-sm">Promote a culture of technological development that prioritizes human
+                rights and social well-being.</p>
+            </div>
+          </div>
+        </div>
+      </div><!-- Areas of Action -->
+      <div class="py-20 gradient-mesh">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-12">
+            <h2 class="font-display text-3xl font-bold mb-4">Action <span class="text-blue-400">Areas</span></h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">Four fundamental pillars that structure the network's work</p>
+            <div class="w-24 h-1 bg-gradient-to-r from-amber-400 to-blue-400 mx-auto rounded-full mt-6"></div>
+          </div>
+          <div class="grid md:grid-cols-2 gap-8"><!-- Area 1: Docencia -->
+            <div class="glass-card rounded-2xl overflow-hidden">
+              <div class="h-3 bg-gradient-to-r from-amber-400 to-amber-600"></div>
+              <div class="p-8">
+                <div class="flex items-center gap-4 mb-6">
+                  <div class="w-16 h-16 rounded-2xl bg-amber-500/20 flex items-center justify-center">
+                    <svg width="32" height="32" viewbox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="1.5">
+                      <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                      <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="font-display text-2xl font-bold">Teaching and Training</h3>
+                    <p class="text-amber-400 text-sm">Area 1</p>
+                  </div>
+                </div>
+                <div class="space-y-3 pl-4 border-l border-white/10">
+                  <p class="text-gray-400 text-sm flex items-center gap-2"><span class="text-amber-400">•</span>
+                    Integration of AI ethics in university curricula.</p>
+                  <p class="text-gray-400 text-sm flex items-center gap-2"><span class="text-amber-400">•</span> Open
+                    courses and resources for teachers.</p>
+                </div>
+              </div>
+            </div><!-- Area 2: Investigación -->
+            <div class="glass-card rounded-2xl overflow-hidden">
+                <div class="h-3 bg-gradient-to-r from-blue-400 to-blue-600"></div>
+                <div class="p-8">
+                  <div class="flex items-center gap-4 mb-6">
+                    <div class="w-16 h-16 rounded-2xl bg-blue-500/20 flex items-center justify-center">
+                      <svg width="32" height="32" viewbox="0 0 24 24" fill="none" stroke="#4a90d9" stroke-width="1.5">
+                        <circle cx="11" cy="11" r="8" />
+                        <path d="M21 21l-4.35-4.35" />
+                        <path d="M11 8v6" />
+                        <path d="M8 11h6" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 class="font-display text-2xl font-bold">Applied Research</h3>
+                      <p class="text-blue-400 text-sm">Area 2</p>
+                    </div>
+                  </div>
+                  <div class="space-y-3 pl-4 border-l border-white/10">
+                    <p class="text-gray-400 text-sm flex items-center gap-2"><span class="text-blue-400">•</span>
+                      Interdisciplinary collaborative projects.</p>
+                    <p class="text-gray-400 text-sm flex items-center gap-2"><span class="text-blue-400">•</span>
+                      Publication of regional case studies.</p>
+                  </div>
+                </div>
+              </div><!-- Area 3: Ética -->
+              <div class="glass-card rounded-2xl overflow-hidden">
+                  <div class="h-3 bg-gradient-to-r from-purple-400 to-purple-600"></div>
+                  <div class="p-8">
+                    <div class="flex items-center gap-4 mb-6">
+                      <div class="w-16 h-16 rounded-2xl bg-purple-500/20 flex items-center justify-center">
+                        <svg width="32" height="32" viewbox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="1.5">
+                          <path d="M12 3v18" />
+                          <path d="M5 6l7-3 7 3" />
+                          <path d="M5 6v8a7 7 0 0 0 7 7 7 7 0 0 0 7-7V6" />
+                          <circle cx="12" cy="11" r="3" />
+                        </svg>
+                      </div>
+                      <div>
+                        <h3 class="font-display text-2xl font-bold">Ethics and Governance</h3>
+                        <p class="text-purple-400 text-sm">Area 3</p>
+                      </div>
+                    </div>
+                    <div class="space-y-3 pl-4 border-l border-white/10">
+                      <p class="text-gray-400 text-sm flex items-center gap-2"><span class="text-purple-400">•</span>
+                        Technical advice to governments and organizations.</p>
+                      <p class="text-gray-400 text-sm flex items-center gap-2"><span class="text-purple-400">•</span> AI
+                        policy observatory.</p>
+                    </div>
+                  </div>
+                </div><!-- Area 4: Cooperación -->
+                <div class="glass-card rounded-2xl overflow-hidden">
+                    <div class="h-3 bg-gradient-to-r from-green-400 to-green-600"></div>
+                    <div class="p-8">
+                      <div class="flex items-center gap-4 mb-6">
+                        <div class="w-16 h-16 rounded-2xl bg-green-500/20 flex items-center justify-center">
+                          <svg width="32" height="32" viewbox="0 0 24 24" fill="none" stroke="#22c55e"
+                            stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="2" y1="12" x2="22" y2="12" />
+                            <path
+                              d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                          </svg>
+                        </div>
+                        <div>
+                          <h3 class="font-display text-2xl font-bold">Regional Cooperation</h3>
+                          <p class="text-green-400 text-sm">Area 4</p>
+                        </div>
+                      </div>
+                      <div class="space-y-3 pl-4 border-l border-white/10">
+                        <p class="text-gray-400 text-sm flex items-center gap-2"><span class="text-green-400">•</span>
+                          Network of laboratories and shared infrastructure.</p>
+                        <p class="text-gray-400 text-sm flex items-center gap-2"><span class="text-green-400">•</span>
+                          Annual events and conferences.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- CTA -->
+            <div class="py-16" style="background-color: var(--secondary-surface);">
+                <div class="mt-16 bg-blue-500/10 rounded-2xl p-8 text-center border bordered-blue-500/20">
+                  <h2 class="font-display text-2xl font-bold mb-4">Explore our resources</h2>
+                  <p class="text-gray-400 mb-6 max-w-2xl mx-auto">Access our library of publications, guides, and
+                    educational materials produced by the network.</p><button onclick="navigateTo('resources')"
+                    class="btn-secondary px-8 py-3 rounded-xl font-semibold"> Access the Library → </button>
+                </div>
+              </div>
+  </section><!-- ========== PAGE: JOIN ========== -->
+  <section id="page-join" class="page-section">
+    <div class="pt-24 pb-8 gradient-mesh">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-sm mb-6">
+            <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="8.5" cy="7" r="4" />
+              <line x1="20" y1="8" x2="20" y2="14" />
+              <line x1="23" y1="11" x2="17" y2="11" />
+            </svg><span>Membership</span>
+          </div>
+          <h1 class="font-display text-4xl sm:text-5xl font-bold mb-6">Join the Network</h1>
+          <p class="text-gray-400 text-lg max-w-2xl mx-auto">Complete the form to request institutional or individual membership in CONVERGE-IA.</p>
+        </div>
+      </div>
+    </div>
+    <div class="pb-20" style="background-color: var(--secondary-surface);">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8"><!-- Membership Types -->
+        <div class="grid md:grid-cols-2 gap-6 mb-12"><button onclick="selectMembershipType('institution')"
+            id="btn-institution"
+            class="glass-card rounded-2xl p-6 text-left transition-all hover:border-amber-400/50 border-2 border-transparent membership-btn active">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-14 h-14 rounded-xl bg-amber-500/20 flex items-center justify-center">
+                <svg width="28" height="28" viewbox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                  <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-display text-xl font-semibold">Institution</h3>
+                <p class="text-gray-400 text-sm">University or research center</p>
+              </div>
+            </div>
+            <p class="text-gray-400 text-sm">Full membership with access to all benefits of the network for your institution.</p>
+          </button> <button onclick="selectMembershipType('individual')" id="btn-individual"
+            class="glass-card rounded-2xl p-6 text-left transition-all hover:border-blue-400/50 border-2 border-transparent membership-btn">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-14 h-14 rounded-xl bg-blue-500/20 flex items-center justify-center">
+                <svg width="28" height="28" viewbox="0 0 24 24" fill="none" stroke="#4a90d9" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-display text-xl font-semibold">Individual</h3>
+                <p class="text-gray-400 text-sm">Researcher, teacher or professional</p>
+              </div>
+            </div>
+            <p class="text-gray-400 text-sm">Individual participation in training and research activities of the network.</p>
+          </button>
+        </div><!-- Registration Form -->
+        <div class="glass-card rounded-3xl p-8 md:p-10">
+          <h2 class="font-display text-2xl font-bold mb-6">Application Form</h2>
+          <form id="registration-form" class="space-y-6"><!-- Institution Fields -->
+            <div id="institution-fields">
+              <div class="grid md:grid-cols-2 gap-6 mb-6">
+                <div><label for="institution_name" class="block text-sm font-medium text-gray-300 mb-2">Institution Name *</label>
+                  <input id="institution_name" type="text" name="institution_name" placeholder="University of..."
+                    class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500">
+                </div>
+                <div><label for="institution_country" class="block text-sm font-medium text-gray-300 mb-2">Country *</label> <select
+                    id="institution_country" name="institution_country" class="w-full input-field rounded-xl py-3 px-4 text-white">
+                    <option value="" class="bg-gray-800">Select a country</option>
+                    <option value="CR" class="bg-gray-800">Costa Rica</option>
+                    <option value="MX" class="bg-gray-800">Mexico</option>
+                    <option value="CO" class="bg-gray-800">Colombia</option>
+                    <option value="AR" class="bg-gray-800">Argentina</option>
+                    <option value="CL" class="bg-gray-800">Chile</option>
+                    <option value="PE" class="bg-gray-800">Peru</option>
+                    <option value="EC" class="bg-gray-800">Ecuador</option>
+                    <option value="ES" class="bg-gray-800">Spain</option>
+                    <option value="OTHER" class="bg-gray-800">Other</option>
+                  </select>
+                </div>
+              </div>
+              <div class="mb-6"><label class="block text-sm font-medium text-gray-300 mb-2">Institution Type *</label>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3"><label
+                    class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
+                    <input type="radio" name="inst_type" value="university" class="text-amber-500"> <span
+                      class="text-sm">University</span> </label> <label
+                    class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
+                    <input type="radio" name="inst_type" value="research" class="text-amber-500"> <span
+                      class="text-sm">R&D Center</span> </label> <label
+                    class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
+                    <input type="radio" name="inst_type" value="government" class="text-amber-500"> <span
+                      class="text-sm">Government</span> </label> <label
+                    class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
+                    <input type="radio" name="inst_type" value="ngo" class="text-amber-500"> <span
+                      class="text-sm">NGO</span> </label>
+                </div>
+              </div>
+            </div><!-- Contact Person -->
+            <div class="border-t border-gray-700 pt-6">
+              <h3 class="font-semibold text-lg mb-4">Contact Person</h3>
+              <div class="grid md:grid-cols-2 gap-6">
+                <div><label for="contact_name" class="block text-sm font-medium text-gray-300 mb-2">Full Name *</label> <input
+                    id="contact_name" type="text" name="contact_name" placeholder="First and last name"
+                    class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500" required>
+                </div>
+                <div><label for="contact_position" class="block text-sm font-medium text-gray-300 mb-2">Job Title / Position</label> <input
+                    id="contact_position" type="text" name="contact_position" placeholder="E.g., Director of Research"
+                    class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500">
+                </div>
+                <div><label for="contact_email" class="block text-sm font-medium text-gray-300 mb-2">Email Address *</label> <input
+                    id="contact_email" type="email" name="contact_email" placeholder="email@institution.edu"
+                    class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500" required>
+                </div>
+                <div><label for="contact_phone" class="block text-sm font-medium text-gray-300 mb-2">Phone Number</label> <input type="tel"
+                    id="contact_phone" name="contact_phone" placeholder="+506 0000-0000"
+                    class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500">
+                </div>
+              </div>
+            </div><!-- Areas of Interest -->
+            <div class="border-t border-gray-700 pt-6">
+              <h3 class="font-semibold text-lg mb-4">Areas of Interest</h3>
+              <div class="grid grid-cols-2 md:grid-cols-3 gap-3"><label
+                  class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
+                  <input type="checkbox" name="areas" value="docencia" class="text-amber-500 rounded"> <span
+                    class="text-sm">Teaching and Training</span> </label> <label
+                  class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
+                  <input type="checkbox" name="areas" value="investigacion" class="text-amber-500 rounded"> <span
+                    class="text-sm">Research</span> </label> <label
+                  class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
+                  <input type="checkbox" name="areas" value="etica" class="text-amber-500 rounded"> <span
+                    class="text-sm">Ethics and Governance</span> </label> <label
+                  class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
+                  <input type="checkbox" name="areas" value="cooperacion" class="text-amber-500 rounded"> <span
+                    class="text-sm">Regional Cooperation</span> </label> <label
+                  class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
+                  <input type="checkbox" name="areas" value="politicas" class="text-amber-500 rounded"> <span
+                    class="text-sm">Public Policies</span> </label> <label
+                  class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
+                  <input type="checkbox" name="areas" value="industria" class="text-amber-500 rounded"> <span
+                    class="text-sm">Industry Alliances</span> </label>
+              </div>
+            </div><!-- Message -->
+            <div class="border-t border-gray-700 pt-6"><label for="motivation"
+                class="block text-sm font-medium text-gray-300 mb-2">Motivation to join (optional)</label>
+              <textarea id="motivation" name="message" rows="4"
+                placeholder="Briefly tell us why you want to be part of CONVERGE-IA..."
+                class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500 resize-none"></textarea>
+            </div><!-- Terms -->
+            <div class="border-t border-gray-700 pt-6"><label class="flex items-start gap-3 cursor-pointer"> <input
+                  id="terms_accept" type="checkbox" name="terms" class="mt-1 text-amber-500 rounded" required> <span
+                  class="text-sm text-gray-400"> I have read and accept the <span class="text-blue-400">terms and
+                    conditions</span> of membership of CONVERGE-IA,
+                  including the commitment to the ethical principles of the network. </span> </label>
+            </div><!-- Submit --> <button type="submit"
+              class="w-full btn-primary py-4 rounded-xl font-semibold text-lg flex items-center justify-center gap-2">
+              <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 2L11 13" />
+                <path d="M22 2l-7 20-4-9-9-4 20-7z" />
+              </svg> Submit Request </button>
+          </form>
+        </div><!-- Help -->
+        <div class="text-center mt-8">
+          <p class="text-gray-400 text-sm">Have questions? Write to us at <a href="mailto:ethicalai_ue_ciodd@ucr.ac.cr"
+              class="text-blue-400 hover:underline">ethicalai_ue_ciodd@ucr.ac.cr</a></p>
+        </div>
+      </div>
+    </div>
+  </section><!-- ========== PAGE: RESOURCES ========== -->
+  <section id="page-resources" class="page-section">
+    <div class="pt-24 pb-16 gradient-mesh">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-sm mb-6">
+            <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="#4a90d9" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+            </svg><span>Digital Library</span>
+          </div>
+          <h1 class="font-display text-4xl sm:text-5xl font-bold mb-6">Resource Repository</h1>
+          <p class="text-gray-400 text-lg max-w-3xl mx-auto">Materials, guides, tools, and reference documents for the
+            ethical development of artificial intelligence.</p>
+        </div>
+      </div>
+    </div>
+    <div class="py-20" style="background-color: var(--secondary-surface);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><!-- Filter Tabs -->
+        <div class="flex flex-wrap gap-3 mb-12 justify-center"><button onclick="filterResources('all')"
+            class="filter-btn active px-4 py-2 rounded-full text-sm font-medium border border-amber-400 text-amber-400 transition-all"
+            data-filter="all">All</button> <button onclick="filterResources('gobernanza')"
+            class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-gray-600 text-gray-400 hover:border-blue-400 transition-all"
+            data-filter="gobernanza">Governance</button> <button onclick="filterResources('guia')"
+            class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-gray-600 text-gray-400 hover:border-green-400 transition-all"
+            data-filter="guia">Guides</button> <button onclick="filterResources('capacitacion')"
+            class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-gray-600 text-gray-400 hover:border-purple-400 transition-all"
+            data-filter="capacitacion">Training</button> <button onclick="filterResources('herramientas')"
+            class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-gray-600 text-gray-400 hover:border-pink-400 transition-all"
+            data-filter="herramientas">Tools</button> <button onclick="filterResources('caso')"
+            class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-gray-600 text-gray-400 hover:border-cyan-400 transition-all"
+            data-filter="caso">Case Studies</button>
+        </div><!-- Resources Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12" id="resources-grid"><!-- Resource 1 -->
+          <div
+            class="resource-card glass-card rounded-2xl overflow-hidden hover:border-amber-400 hover:border transition-all group"
+            data-type="gobernanza">
+            <div class="h-3 bg-gradient-to-r from-amber-500 to-amber-600"></div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-4"><span
+                  class="px-3 py-1 rounded-full text-xs font-medium bg-amber-500/20 text-amber-400">Governance
+                  Framework</span> <span class="text-2xl">📋</span>
+              </div>
+              <h3 class="font-display text-lg font-semibold mb-3">Comprehensive AI Ethical Governance Framework</h3>
+              <p class="text-gray-400 text-sm mb-4">Reference document establishing principles, decision-making
+                structure, and institutional responsibilities.</p>
+              <div class="flex items-center justify-between"><span class="text-xs text-gray-500">Coming soon</span>
+              </div>
+            </div>
+          </div><!-- Resource 2 -->
+          <div
+            class="resource-card glass-card rounded-2xl overflow-hidden hover:border-blue-400 hover:border transition-all group"
+            data-type="guia">
+            <div class="h-3 bg-gradient-to-r from-blue-500 to-blue-600"></div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-4"><span
+                  class="px-3 py-1 rounded-full text-xs font-medium bg-blue-500/20 text-blue-400">Practical Guide</span>
+                <span class="text-2xl">📘</span>
+              </div>
+              <h3 class="font-display text-lg font-semibold mb-3">Guide for Ethical Evaluation of Algorithms</h3>
+              <p class="text-gray-400 text-sm mb-4">Step-by-step tool to evaluate AI systems focusing on bias,
+                transparency, and human rights.</p>
+              <div class="flex items-center justify-between"><span class="text-xs text-gray-500">Coming soon</span>
+              </div>
+            </div>
+          </div><!-- Resource 3 -->
+          <div
+            class="resource-card glass-card rounded-2xl overflow-hidden hover:border-green-400 hover:border transition-all group"
+            data-type="capacitacion">
+            <div class="h-3 bg-gradient-to-r from-green-500 to-green-600"></div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-4"><span
+                  class="px-3 py-1 rounded-full text-xs font-medium bg-green-500/20 text-green-400">Training</span>
+                <span class="text-2xl">🎓</span>
+              </div>
+              <h3 class="font-display text-lg font-semibold mb-3">Module: Fundamentals of Ethical AI</h3>
+              <p class="text-gray-400 text-sm mb-4">Self-directed course for teachers and managers on
+                principles of ethics in AI development.</p>
+              <div class="flex items-center justify-between"><span class="text-xs text-gray-500">Coming soon</span>
+              </div>
+            </div>
+          </div><!-- Resource 4 -->
+          <div
+            class="resource-card glass-card rounded-2xl overflow-hidden hover:border-purple-400 hover:border transition-all group"
+            data-type="herramientas">
+            <div class="h-3 bg-gradient-to-r from-purple-500 to-purple-600"></div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-4"><span
+                  class="px-3 py-1 rounded-full text-xs font-medium bg-purple-500/20 text-purple-400">Tool</span>
+                <span class="text-2xl">🛠️</span>
+              </div>
+              <h3 class="font-display text-lg font-semibold mb-3">CONVERGE-AI Audit Kit</h3>
+              <p class="text-gray-400 text-sm mb-4">Digital tool to audit and document compliance with ethical
+                principles in AI systems.</p>
+              <div class="flex items-center justify-between"><span class="text-xs text-gray-500">Coming soon</span>
+              </div>
+            </div>
+          </div><!-- Resource 5 -->
+          <div
+            class="resource-card glass-card rounded-2xl overflow-hidden hover:border-pink-400 hover:border transition-all group"
+            data-type="caso">
+            <div class="h-3 bg-gradient-to-r from-pink-500 to-pink-600"></div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-4"><span
+                  class="px-3 py-1 rounded-full text-xs font-medium bg-pink-500/20 text-pink-400">Case Study</span>
+                <span class="text-2xl">📍</span>
+              </div>
+              <h3 class="font-display text-lg font-semibold mb-3">AI in Education: Critical Analysis of Regional
+                Experience</h3>
+              <p class="text-gray-400 text-sm mb-4">Analysis of cases of AI implementation in Latin American higher
+                education institutions.</p>
+              <div class="flex items-center justify-between"><span class="text-xs text-gray-500">Coming soon</span>
+              </div>
+            </div>
+          </div><!-- Resource 6 -->
+          <div
+            class="resource-card glass-card rounded-2xl overflow-hidden hover:border-cyan-400 hover:border transition-all group"
+            data-type="gobernanza">
+            <div class="h-3 bg-gradient-to-r from-cyan-500 to-cyan-600"></div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-4"><span
+                  class="px-3 py-1 rounded-full text-xs font-medium bg-cyan-500/20 text-cyan-400">Governance
+                  Framework</span> <span class="text-2xl">⚖️</span>
+              </div>
+              <h3 class="font-display text-lg font-semibold mb-3">Institutional Policy for Responsible AI Development
+              </h3>
+              <p class="text-gray-400 text-sm mb-4">Adaptable template for institutions to develop internal AI policies
+                aligned with CONVERGE-IA.</p>
+              <div class="flex items-center justify-between"><span class="text-xs text-gray-500">Coming soon</span>
+              </div>
+            </div>
+          </div>
+        </div><!-- Access Notice -->
+        <div class="p-6 rounded-2xl border-2 border-dashed border-blue-500/50 bg-blue-500/5">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center flex-shrink-0">
+              <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#4a90d9" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-blue-400 mb-1">Resources Coming Soon</h3>
+              <p class="text-gray-400 text-sm">Resources, documents, and tools are currently being developed. They will
+                be available for download once published. Join the network to be notified.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- ========== PAGE: PROJECTS ========== -->
+  <section id="page-projects" class="page-section">
+    <div class="pt-24 pb-16 gradient-mesh">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-sm mb-6">
+            <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <path d="M21 21l-4.35-4.35" />
+            </svg><span>Lines of Work</span>
+          </div>
+          <h1 class="font-display text-4xl sm:text-5xl font-bold mb-6">Projects and Calls</h1>
+          <p class="text-gray-400 text-lg max-w-3xl mx-auto">Active initiatives where you can participate and contribute
+            to the ethical development of artificial intelligence.</p>
+        </div>
+      </div>
+    </div>
+    <div class="py-20" style="background-color: var(--secondary-surface);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><!-- Status Filter -->
+        <div class="flex flex-wrap gap-3 mb-12 justify-center"><button onclick="filterProjects('all')"
+            class="project-filter active px-4 py-2 rounded-full text-sm font-medium border border-amber-400 text-amber-400"
+            data-filter="all">All</button> <button onclick="filterProjects('activo')"
+            class="project-filter px-4 py-2 rounded-full text-sm font-medium border border-gray-600 text-gray-400 hover:border-green-400 transition-all"
+            data-filter="activo">In Progress</button> <button onclick="filterProjects('convocatoria')"
+            class="project-filter px-4 py-2 rounded-full text-sm font-medium border border-gray-600 text-gray-400 hover:border-blue-400 transition-all"
+            data-filter="convocatoria">Open Calls</button> <button onclick="filterProjects('proximamente')"
+            class="project-filter px-4 py-2 rounded-full text-sm font-medium border border-gray-600 text-gray-400 hover:border-purple-400 transition-all"
+            data-filter="proximamente">Coming Soon</button>
+        </div><!-- Projects Grid -->
+        <div class="space-y-6" id="projects-grid"><!-- Project 1 -->
+          <div
+            class="project-card glass-card rounded-2xl p-8 hover:border-green-400 hover:border transition-all border-l-4 border-green-500"
+            data-status="activo">
+            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-4"><span
+                    class="px-3 py-1 rounded-full text-xs font-bold bg-green-500/20 text-green-400">IN PROGRESS</span>
+                  <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-gray-400">Erasmus+ KA2</span>
+                </div>
+                <h3 class="font-display text-2xl font-semibold mb-3">Teacher Training in Ethical AI</h3>
+                <p class="text-gray-400 mb-4">Development and implementation of training courses for university teachers
+                  on integrating ethical competencies in AI teaching. Includes active methodologies, case studies, and
+                  open resources.</p>
+                <div class="flex flex-wrap gap-2 mb-6"><span
+                    class="px-3 py-1 rounded-full text-xs bg-blue-500/20 text-blue-400">Training</span> <span
+                    class="px-3 py-1 rounded-full text-xs bg-purple-500/20 text-purple-400">Higher Education</span>
+                  <span class="px-3 py-1 rounded-full text-xs bg-amber-500/20 text-amber-400">Ibero-America</span>
+                </div>
+                <p class="text-sm text-gray-500 mb-4"><strong>Coordinator:</strong> Universidad de Costa Rica |
+                  <strong>Participants:</strong> 0
+                  institutions
+                </p>
+              </div><button onclick="handleProjectInterest('project-1')"
+                class="btn-primary px-6 py-3 rounded-xl font-medium text-lg flex-shrink-0 whitespace-nowrap"> I'm
+                interested </button>
+            </div>
+          </div><!-- Project 2 -->
+          <div
+            class="project-card glass-card rounded-2xl p-8 hover:border-blue-400 hover:border transition-all border-l-4 border-blue-500"
+            data-status="convocatoria">
+            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-4"><span
+                    class="px-3 py-1 rounded-full text-xs font-bold bg-blue-500/20 text-blue-400">OPEN CALL</span> <span
+                    class="px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-gray-400">Dates TBD</span>
+                </div>
+                <h3 class="font-display text-2xl font-semibold mb-3">Collaborative Research Network: AI and Human Rights
+                </h3>
+                <p class="text-gray-400 mb-4">Seeking research teams for projects focused on impact analysis of AI
+                  systems on human rights. Funding available for applied research.</p>
+                <div class="flex flex-wrap gap-2 mb-6"><span
+                    class="px-3 py-1 rounded-full text-xs bg-purple-500/20 text-purple-400">Research</span> <span
+                    class="px-3 py-1 rounded-full text-xs bg-pink-500/20 text-pink-400">Human Rights</span> <span
+                    class="px-3 py-1 rounded-full text-xs bg-amber-500/20 text-amber-400">Funded</span>
+                </div>
+                <p class="text-sm text-gray-500 mb-4"><strong>Duration:</strong> TBD | <strong>Eligible:</strong>
+                  Universities and R&D Centers in
+                  Ibero-America
+                </p>
+              </div><button onclick="handleProjectInterest('project-2')"
+                class="btn-primary px-6 py-3 rounded-xl font-medium text-lg flex-shrink-0 whitespace-nowrap">
+                Participate </button>
+            </div>
+          </div><!-- Project 3 -->
+          <div
+            class="project-card glass-card rounded-2xl p-8 hover:border-amber-400 hover:border transition-all border-l-4 border-amber-500"
+            data-status="activo">
+            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-4"><span
+                    class="px-3 py-1 rounded-full text-xs font-bold bg-green-500/20 text-green-400">IN PROGRESS</span>
+                  <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-gray-400">Regional
+                    Initiative</span>
+                </div>
+                <h3 class="font-display text-2xl font-semibold mb-3">AI Governance Observatory in Latin America</h3>
+                <p class="text-gray-400 mb-4">Monitoring and analysis of regulatory frameworks, policies, and AI
+                  governance practices in Ibero-American countries. Generation of annual reports and dialogue spaces.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-6"><span
+                    class="px-3 py-1 rounded-full text-xs bg-cyan-500/20 text-cyan-400">Governance</span> <span
+                    class="px-3 py-1 rounded-full text-xs bg-yellow-500/20 text-yellow-400">Public Policies</span>
+                  <span class="px-3 py-1 rounded-full text-xs bg-amber-500/20 text-amber-400">Sustained</span>
+                </div>
+                <p class="text-sm text-gray-500 mb-4"><strong>Coordinator:</strong> CONVERGE-IA |
+                  <strong>Participants:</strong> Multisectoral
+                </p>
+              </div><button onclick="handleProjectInterest('project-3')"
+                class="btn-primary px-6 py-3 rounded-xl font-medium text-lg flex-shrink-0 whitespace-nowrap">
+                Collaborate </button>
+            </div>
+          </div><!-- Project 4 -->
+          <div
+            class="project-card glass-card rounded-2xl p-8 hover:border-purple-400 hover:border transition-all border-l-4 border-purple-500"
+            data-status="proximamente">
+            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-4"><span
+                    class="px-3 py-1 rounded-full text-xs font-bold bg-purple-500/20 text-purple-400">COMING SOON</span>
+                  <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-gray-400">Launch TBD</span>
+                </div>
+                <h3 class="font-display text-2xl font-semibold mb-3">Innovation Program: Responsible AI in Public
+                  Sectors</h3>
+                <p class="text-gray-400 mb-4">Pilot initiative to co-create and validate ethical AI solutions in
+                  collaboration with public agencies. Emphasis on health, education, and justice.</p>
+                <div class="flex flex-wrap gap-2 mb-6"><span
+                    class="px-3 py-1 rounded-full text-xs bg-green-500/20 text-green-400">Innovation</span> <span
+                    class="px-3 py-1 rounded-full text-xs bg-orange-500/20 text-orange-400">Public Sector</span>
+                  <span class="px-3 py-1 rounded-full text-xs bg-amber-500/20 text-amber-400">Upcoming</span>
+                </div>
+                <p class="text-sm text-gray-500 mb-4"><strong>Modality:</strong> Co-creation |
+                  <strong>Spots:</strong> TBD
+                </p>
+              </div><button onclick="handleProjectInterest('project-4')"
+                class="btn-primary px-6 py-3 rounded-xl font-medium text-lg flex-shrink-0 whitespace-nowrap" disabled
+                style="opacity: 0.6; cursor: not-allowed;"> Coming Soon </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- ========== PAGE: GOVERNANCE SUPPORT ========== -->
+  <section id="page-governance" class="page-section">
+    <div class="pt-24 pb-16 gradient-mesh">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-sm mb-6">
+            <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2">
+              <path d="M12 3v18" />
+              <path d="M5 6l7-3 7 3" />
+              <path d="M5 6v8a7 7 0 0 0 7 7 7 7 0 0 0 7-7V6" />
+            </svg><span>Institutional Support</span>
+          </div>
+          <h1 class="font-display text-4xl sm:text-5xl font-bold mb-6">AI Governance</h1>
+          <p class="text-gray-400 text-lg max-w-3xl mx-auto">Comprehensive support for your institution to develop and
+            implement ethical AI governance frameworks.</p>
+        </div>
+      </div>
+    </div>
+    <div class="py-20 gradient-mesh">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><!-- Main Value Prop -->
+        <div class="glass-card rounded-3xl p-8 md:p-12 glow-gold mb-16">
+          <div class="flex flex-col md:flex-row items-start gap-8">
+            <div
+              class="w-24 h-24 rounded-2xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center flex-shrink-0">
+              <svg width="48" height="48" viewbox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                <line x1="3" y1="9" x2="21" y2="9" />
+                <line x1="9" y1="21" x2="9" y2="9" />
+              </svg>
+            </div>
+            <div>
+              <h2 class="font-display text-3xl font-bold mb-4">Why structured governance?</h2>
+              <p class="text-gray-300 mb-4">Without clear governance frameworks, institutions face risks of malpractice,
+                regulatory non-compliance, and loss of trust. CONVERGE-IA offers specialized support to build governance
+                systems adapted to your context.</p>
+              <ul class="space-y-3 text-gray-400">
+                <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-amber-400"></span> Reduces
+                  ethical-legal risks</li>
+                <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-amber-400"></span> Strengthens
+                  internal and external trust</li>
+                <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-amber-400"></span> Aligns with
+                  emerging regulations</li>
+              </ul>
+            </div>
+          </div>
+        </div><!-- Methodology -->
+        <div class="mb-16">
+          <div class="text-center mb-12">
+            <h2 class="font-display text-3xl font-bold mb-4">Our Support Process</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">Four structured phases to implement ethical AI governance in your
+              institution</p>
+          </div>
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6"><!-- Phase 1 -->
+            <div class="glass-card rounded-2xl p-6 text-center border-t-4 border-blue-500">
+              <div class="w-16 h-16 rounded-full bg-blue-500/20 flex items-center justify-center mx-auto mb-4"><span
+                  class="text-3xl font-bold text-blue-400">1</span>
+              </div>
+              <h3 class="font-display text-lg font-semibold mb-3">Diagnosis</h3>
+              <p class="text-gray-400 text-sm mb-4">Comprehensive assessment of institutional capabilities, existing
+                policies, and specific AI needs.</p>
+              <p class="text-xs text-gray-500">~2-3 weeks</p>
+            </div><!-- Phase 2 -->
+            <div class="glass-card rounded-2xl p-6 text-center border-t-4 border-purple-500">
+              <div class="w-16 h-16 rounded-full bg-purple-500/20 flex items-center justify-center mx-auto mb-4"><span
+                  class="text-3xl font-bold text-purple-400">2</span>
+              </div>
+              <h3 class="font-display text-lg font-semibold mb-3">Participatory Design</h3>
+              <p class="text-gray-400 text-sm mb-4">Co-creation of the governance framework with internal stakeholders
+                (academics, managers, researchers).</p>
+              <p class="text-xs text-gray-500">~4-6 weeks</p>
+            </div><!-- Phase 3 -->
+            <div class="glass-card rounded-2xl p-6 text-center border-t-4 border-green-500">
+              <div class="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-4"><span
+                  class="text-3xl font-bold text-green-400">3</span>
+              </div>
+              <h3 class="font-display text-lg font-semibold mb-3">Implementation</h3>
+              <p class="text-gray-400 text-sm mb-4">Launch of the framework, training of key teams, and establishment of
+                processes.</p>
+              <p class="text-xs text-gray-500">~3-4 months</p>
+            </div><!-- Phase 4 -->
+            <div class="glass-card rounded-2xl p-6 text-center border-t-4 border-amber-500">
+              <div class="w-16 h-16 rounded-full bg-amber-500/20 flex items-center justify-center mx-auto mb-4"><span
+                  class="text-3xl font-bold text-amber-400">4</span>
+              </div>
+              <h3 class="font-display text-lg font-semibold mb-3">Continuous Monitoring</h3>
+              <p class="text-gray-400 text-sm mb-4">Tracking, impact assessment, and continuous improvement of the
+                implemented framework.</p>
+              <p class="text-xs text-gray-500">Sustained</p>
+            </div>
+          </div>
+        </div><!-- Who is this for? -->
+        <div class="mb-16">
+          <h2 class="font-display text-3xl font-bold mb-8 text-center">Who is this support for?</h2>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="glass-card rounded-2xl p-6">
+              <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center mb-4">
+                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#4a90d9" stroke-width="2">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                  <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                </svg>
+              </div>
+              <h3 class="font-display text-lg font-semibold mb-2">Universities</h3>
+              <p class="text-gray-400 text-sm">Institutions interested in integrating ethical governance in AI research
+                and teaching.</p>
+            </div>
+            <div class="glass-card rounded-2xl p-6">
+              <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center mb-4">
+                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2">
+                  <circle cx="11" cy="11" r="8" />
+                  <path d="M21 21l-4.35-4.35" />
+                </svg>
+              </div>
+              <h3 class="font-display text-lg font-semibold mb-2">Research Centers</h3>
+              <p class="text-gray-400 text-sm">Units that develop AI technologies and need specific governance
+                frameworks.</p>
+            </div>
+            <div class="glass-card rounded-2xl p-6">
+              <div class="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center mb-4">
+                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </div>
+              <h3 class="font-display text-lg font-semibold mb-2">Public Agencies</h3>
+              <p class="text-gray-400 text-sm">Government institutions implementing responsible AI solutions.</p>
+            </div>
+          </div>
+        </div><!-- CTA Section -->
+        <div class="glass-card rounded-3xl p-8 md:p-12 text-center glow-blue">
+          <h2 class="font-display text-2xl font-bold mb-4">Does your institution need AI governance?</h2>
+          <p class="text-gray-400 mb-8 max-w-2xl mx-auto">Request a free initial consultation with our specialized team
+            to learn how we can support your institution.</p><button onclick="handleGovernanceRequest()"
+            class="btn-primary px-10 py-4 rounded-xl font-semibold text-lg">
+            Request Support </button>
+        </div>
+      </div>
+    </div>
+  </section><!-- ========== PAGE: GOVERNANCE REQUEST ========== -->
+  <section id="page-governance-request" class="page-section">
+    <div class="pt-24 pb-16 gradient-mesh">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-sm mb-6">
+            <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2">
+              <path d="M12 3v18" />
+              <path d="M5 6l7-3 7 3" />
+              <path d="M5 6v8a7 7 0 0 0 7 7 7 7 0 0 0 7-7V6" />
+            </svg><span>Personalized Support</span>
+          </div>
+          <h1 class="font-display text-4xl sm:text-5xl font-bold mb-6">Request Information on AI Governance</h1>
+          <p class="text-gray-400 text-lg max-w-3xl mx-auto">Tell us about your institution and your specific needs. Our
+            team will provide personalized advice to implement an ethical AI governance framework.</p>
+        </div>
+      </div>
+    </div>
+    <div class="pb-20" style="background-color: var(--secondary-surface);">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8">
+        <div class="glass-card rounded-3xl p-8 md:p-12 mb-8">
+          <h2 class="font-display text-2xl font-bold mb-2 flex items-center gap-3">
+            <svg width="28" height="28" viewbox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg> Consultation Form
+          </h2>
+          <p class="text-gray-400 mb-8">Complete this form and an AI governance specialist will contact you within 5
+            business days.</p>
+          <form id="governance-request-form" class="space-y-6"><!-- Institutional Information -->
+            <div class="border-b border-gray-700 pb-6">
+              <h3 class="font-semibold text-lg mb-4 flex items-center gap-2"><span
+                  class="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-400 font-bold text-sm">1</span>
+                Institutional Information</h3>
+              <div class="grid md:grid-cols-2 gap-6">
+                <div><label for="gov_inst_name" class="block text-sm font-medium text-gray-300 mb-2">Institution Name *</label>
+                  <input id="gov_inst_name" type="text" name="inst_name" placeholder="University..."
+                    class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500" required>
+                </div>
+                <div><label for="gov_country" class="block text-sm font-medium text-gray-300 mb-2">Country *</label> <select
+                    id="gov_country" name="country" class="w-full input-field rounded-xl py-3 px-4 text-white" required>
+                    <option value="" class="bg-gray-800">Select a country</option>
+                    <option value="CR" class="bg-gray-800">Costa Rica</option>
+                    <option value="MX" class="bg-gray-800">Mexico</option>
+                    <option value="CO" class="bg-gray-800">Colombia</option>
+                    <option value="AR" class="bg-gray-800">Argentina</option>
+                    <option value="CL" class="bg-gray-800">Chile</option>
+                    <option value="PE" class="bg-gray-800">Peru</option>
+                    <option value="EC" class="bg-gray-800">Ecuador</option>
+                    <option value="ES" class="bg-gray-800">Spain</option>
+                    <option value="OTHER" class="bg-gray-800">Other</option>
+                  </select>
+                </div>
+                <div><label for="gov_inst_type" class="block text-sm font-medium text-gray-300 mb-2">Institution Type *</label> <select
+                    id="gov_inst_type" name="inst_type" class="w-full input-field rounded-xl py-3 px-4 text-white" required>
+                    <option value="" class="bg-gray-800">Select</option>
+                    <option value="university" class="bg-gray-800">University</option>
+                    <option value="research" class="bg-gray-800">Research Center</option>
+                    <option value="government" class="bg-gray-800">Public Agency</option>
+                    <option value="ngo" class="bg-gray-800">NGO / Non-Profit</option>
+                  </select>
+                </div>
+                <div><label for="gov_researchers_count" class="block text-sm font-medium text-gray-300 mb-2">Number of AI researchers</label>
+                  <select id="gov_researchers_count" name="researchers_count" class="w-full input-field rounded-xl py-3 px-4 text-white">
+                    <option value="" class="bg-gray-800">Select</option>
+                    <option value="1-5" class="bg-gray-800">1-5</option>
+                    <option value="6-15" class="bg-gray-800">6-15</option>
+                    <option value="16-30" class="bg-gray-800">16-30</option>
+                    <option value="31-50" class="bg-gray-800">31-50</option>
+                    <option value="50+" class="bg-gray-800">More than 50</option>
+                  </select>
+                </div>
+              </div>
+            </div><!-- Contact Person -->
+            <div class="border-b border-gray-700 pb-6">
+              <h3 class="font-semibold text-lg mb-4 flex items-center gap-2"><span
+                  class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold text-sm">2</span>
+                Contact Person</h3>
+              <div class="grid md:grid-cols-2 gap-6">
+                <div><label for="gov_contact_name" class="block text-sm font-medium text-gray-300 mb-2">Full Name *</label> <input id="gov_contact_name" type="text"
+                    name="contact_name" placeholder="Your name"
+                    class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500" required>
+                </div>
+                <div><label for="gov_contact_role" class="block text-sm font-medium text-gray-300 mb-2">Position *</label> <input id="gov_contact_role" type="text"
+                    name="contact_role" placeholder="Ex: Research Director"
+                    class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500" required>
+                </div>
+                <div><label for="gov_contact_email" class="block text-sm font-medium text-gray-300 mb-2">Email *</label> <input id="gov_contact_email" type="email"
+                    name="contact_email" placeholder="you@institution.edu"
+                    class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500" required>
+                </div>
+                <div><label for="gov_contact_phone" class="block text-sm font-medium text-gray-300 mb-2">Phone</label> <input type="tel"
+                    id="gov_contact_phone" name="contact_phone" placeholder="+506 0000-0000"
+                    class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500">
+                </div>
+              </div>
+            </div><!-- Current Situation -->
+            <div class="border-b border-gray-700 pb-6">
+              <h3 class="font-semibold text-lg mb-4 flex items-center gap-2"><span
+                  class="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 font-bold text-sm">3</span>
+                Current Situation of your Institution</h3>
+              <div><label class="block text-sm font-medium text-gray-300 mb-3">Does your institution have an AI
+                  governance policy or framework? *</label>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3"><label
+                    class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
+                    <input type="radio" name="has_governance" value="yes" class="text-amber-500" required> <span
+                      class="text-sm">Yes, formal</span> </label> <label
+                    class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
+                    <input type="radio" name="has_governance" value="informal" class="text-amber-500"> <span
+                      class="text-sm">Informal/Incipient</span> </label> <label
+                    class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
+                    <input type="radio" name="has_governance" value="no" class="text-amber-500"> <span
+                      class="text-sm">Does not exist</span> </label> <label
+                    class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
+                    <input type="radio" name="has_governance" value="planning" class="text-amber-500"> <span
+                      class="text-sm">In planning</span> </label>
+                </div>
+              </div>
+              <div class="mt-6"><label class="block text-sm font-medium text-gray-300 mb-3">AI areas where you wish to
+                  implement governance *</label>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-3"><label
+                    class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
+                    <input type="checkbox" name="ai_areas" value="research" class="text-amber-500 rounded"> <span
+                      class="text-sm">Research</span> </label> <label
+                    class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
+                    <input type="checkbox" name="ai_areas" value="teaching" class="text-amber-500 rounded"> <span
+                      class="text-sm">Teaching</span> </label> <label
+                    class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
+                    <input type="checkbox" name="ai_areas" value="administration" class="text-amber-500 rounded">
+                    <span class="text-sm">Administration</span> </label> <label
+                    class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
+                    <input type="checkbox" name="ai_areas" value="services" class="text-amber-500 rounded"> <span
+                      class="text-sm">Student Services</span> </label> <label
+                    class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
+                    <input type="checkbox" name="ai_areas" value="health" class="text-amber-500 rounded"> <span
+                      class="text-sm">Health/Wellbeing</span> </label> <label
+                    class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
+                    <input type="checkbox" name="ai_areas" value="other" class="text-amber-500 rounded"> <span
+                      class="text-sm">Other</span> </label>
+                </div>
+              </div>
+            </div><!-- Specific Needs -->
+            <div class="border-b border-gray-700 pb-6">
+              <h3 class="font-semibold text-lg mb-4 flex items-center gap-2"><span
+                  class="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 font-bold text-sm">4</span>
+                Specific Needs</h3>
+              <div><label for="gov_needs" class="block text-sm font-medium text-gray-300 mb-2">What are your main needs? *</label>
+                <textarea id="gov_needs" name="needs" rows="4"
+                  placeholder="Briefly describe the main challenges your institution faces regarding AI governance..."
+                  class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500 resize-none"
+                  required></textarea>
+              </div>
+              <div class="mt-6"><label for="gov_timeline" class="block text-sm font-medium text-gray-300 mb-2">How soon do you need to
+                  start? *</label> <select id="gov_timeline" name="timeline" class="w-full input-field rounded-xl py-3 px-4 text-white"
+                  required>
+                  <option value="" class="bg-gray-800">Select</option>
+                  <option value="immediate" class="bg-gray-800">Urgent (next 2 weeks)</option>
+                  <option value="month" class="bg-gray-800">Next month</option>
+                  <option value="quarter" class="bg-gray-800">Next quarter</option>
+                  <option value="semester" class="bg-gray-800">Next semester</option>
+                  <option value="flexible" class="bg-gray-800">Flexible</option>
+                </select>
+              </div>
+            </div><!-- Agreement -->
+            <div><label class="flex items-start gap-3 cursor-pointer"> <input id="gov_consent" type="checkbox" name="consent"
+                  class="mt-1 text-amber-500 rounded" required> <span class="text-sm text-gray-400"> I authorize
+                  CONVERGE-IA to contact me with the requested information and acknowledge having read the <span
+                    class="text-blue-400">privacy policy</span>. </span> </label>
+            </div><!-- Submit --> <button type="submit"
+              class="w-full btn-primary py-4 rounded-xl font-semibold text-lg flex items-center justify-center gap-2">
+              <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 2L11 13" />
+                <path d="M22 2l-7 20-4-9-9-4 20-7z" />
+              </svg> Send Request </button>
+          </form>
+        </div><!-- Info Cards -->
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="glass-card rounded-2xl p-6">
+            <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center mb-4">
+              <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#4a90d9" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+            </div>
+            <h3 class="font-semibold mb-2">Quick Response</h3>
+            <p class="text-gray-400 text-sm">We will contact you within 5 business days to discuss your needs.
+            </p>
+          </div>
+          <div class="glass-card rounded-2xl p-6">
+            <div class="w-12 h-12 rounded-xl bg-amber-500/20 flex items-center justify-center mb-4">
+              <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+            </div>
+            <h3 class="font-semibold mb-2">Expert Advice</h3>
+            <p class="text-gray-400 text-sm">Specialized team in ethical AI governance with international experience.
+            </p>
+          </div>
+          <div class="glass-card rounded-2xl p-6">
+            <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center mb-4">
+              <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                <path d="M12 16v-4" />
+                <path d="M12 8h.01" />
+              </svg>
+            </div>
+            <h3 class="font-semibold mb-2">Personalized Solution</h3>
+            <p class="text-gray-400 text-sm">Framework adapted to your institutional context and specific needs.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- ========== PAGE: CONTRIBUTE CONTENT ========== -->
+  <section id="page-contribute-content" class="page-section">
+    <div class="pt-24 pb-16 gradient-mesh">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-sm mb-6">
+            <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <path d="M12 18v-4" />
+              <path d="M9 15h6" />
+            </svg><span>Contribute Content</span>
+          </div>
+          <h1 class="font-display text-4xl sm:text-5xl font-bold mb-6">Suggest Documents, News, and Information</h1>
+          <p class="text-gray-400 text-lg max-w-3xl mx-auto">Do you have a relevant document, important news, or
+            valuable resource to share with the CONVERGE-IA community? Suggest it here. Our editorial team will review
+            and publish it if it meets our standards.</p>
+        </div>
+      </div>
+    </div>
+    <div class="pb-20" style="background-color: var(--secondary-surface);">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8">
+        <div class="glass-card rounded-3xl p-8 md:p-12 mb-8">
+          <h2 class="font-display text-2xl font-bold mb-2 flex items-center gap-3">
+            <svg width="28" height="28" viewbox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2">
+              <line x1="12" y1="5" x2="12" y2="19" />
+              <line x1="5" y1="12" x2="19" y2="12" />
+            </svg> Send Content Suggestion
+          </h2>
+          <p class="text-gray-400 mb-8">Complete the form and our team will review your contribution. Selected content
+            will be published in the CONVERGE-IA repository with corresponding credits.</p>
+          <form id="contribute-form" class="space-y-6"><!-- Contributor Info -->
+            <div class="border-b border-gray-700 pb-6">
+              <h3 class="font-semibold text-lg mb-4 flex items-center gap-2"><span
+                  class="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 font-bold text-sm">1</span>
+                Contributor Information</h3>
+              <div class="grid md:grid-cols-2 gap-6">
+                <div><label for="contrib_name" class="block text-sm font-medium text-gray-300 mb-2">Full Name *</label> <input id="contrib_name" type="text"
+                    name="contrib_name" placeholder="Your name"
+                    class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500" required>
+                </div>
+                <div><label for="contrib_email" class="block text-sm font-medium text-gray-300 mb-2">Email *</label> <input id="contrib_email" type="email"
+                    name="contrib_email" placeholder="you@institution.edu"
+                    class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500" required>
+                </div>
+                <div><label for="contrib_org" class="block text-sm font-medium text-gray-300 mb-2">Institution/Organization</label>
+                  <input id="contrib_org" type="text" name="contrib_org" placeholder="University / Organization"
+                    class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500">
+                </div>
+                <div><label for="contrib_role" class="block text-sm font-medium text-gray-300 mb-2">Position/Role</label> <input
+                    id="contrib_role" type="text" name="contrib_role" placeholder="Ex: Researcher, Professor"
+                    class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500">
+                </div>
+              </div>
+            </div><!-- Content Type -->
+            <div class="border-b border-gray-700 pb-6">
+              <h3 class="font-semibold text-lg mb-4 flex items-center gap-2"><span
+                  class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold text-sm">2</span>
+                Content Type</h3>
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-3"><label
+                  class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors border-2 border-transparent hover:border-blue-400">
+                  <input type="radio" name="content_type" value="documento" class="text-green-500" required> <span
+                    class="text-sm">📄 Document</span> </label> <label
+                  class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors border-2 border-transparent hover:border-blue-400">
+                  <input type="radio" name="content_type" value="noticia" class="text-green-500"> <span
+                    class="text-sm">📰 News</span> </label> <label
+                  class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors border-2 border-transparent hover:border-blue-400">
+                  <input type="radio" name="content_type" value="herramienta" class="text-green-500"> <span
+                    class="text-sm">🛠️ Tool</span> </label> <label
+                  class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors border-2 border-transparent hover:border-blue-400">
+                  <input type="radio" name="content_type" value="articulo" class="text-green-500"> <span
+                    class="text-sm">✍️ Article</span> </label> <label
+                  class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors border-2 border-transparent hover:border-blue-400">
+                  <input type="radio" name="content_type" value="estudio" class="text-green-500"> <span
+                    class="text-sm">📊 Study</span> </label> <label
+                  class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors border-2 border-transparent hover:border-blue-400">
+                  <input type="radio" name="content_type" value="guia" class="text-green-500"> <span class="text-sm">📖
+                    Guide</span> </label> <label
+                  class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors border-2 border-transparent hover:border-blue-400">
+                  <input type="radio" name="content_type" value="recurso" class="text-green-500"> <span
+                    class="text-sm">🎓 Resource</span> </label> <label
+                  class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors border-2 border-transparent hover:border-blue-400">
+                  <input type="radio" name="content_type" value="otro" class="text-green-500"> <span class="text-sm">📌
+                    Other</span> </label>
+              </div>
+            </div><!-- Content Details -->
+            <div class="border-b border-gray-700 pb-6">
+              <h3 class="font-semibold text-lg mb-4 flex items-center gap-2"><span
+                  class="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 font-bold text-sm">3</span>
+                Content Details</h3>
+              <div><label for="contrib_title" class="block text-sm font-medium text-gray-300 mb-2">Title *</label> <input id="contrib_title" type="text"
+                  name="content_title" placeholder="Title of the content you wish to share"
+                  class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500" required>
+              </div>
+              <div class="mt-6"><label for="contrib_desc" class="block text-sm font-medium text-gray-300 mb-2">Description/Abstract
+                  *</label> <textarea id="contrib_desc" name="content_description" rows="4"
+                  placeholder="Briefly describe the content: main topic, relevance to CONVERGE-IA, key data..."
+                  class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500 resize-none"
+                  required></textarea>
+              </div>
+              <div class="mt-6"><label for="contrib_url" class="block text-sm font-medium text-gray-300 mb-2">URL or link (if
+                  applicable)</label> <input id="contrib_url" type="url" name="content_url" placeholder="https://example.com/resource"
+                  class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500">
+              </div>
+              <div class="mt-6"><label class="block text-sm font-medium text-gray-300 mb-3">Related Topics/Areas</label>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-3"><label
+                    class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
+                    <input type="checkbox" name="topics" value="etica" class="text-green-500 rounded"> <span
+                      class="text-sm">Ethics</span> </label> <label
+                    class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
+                    <input type="checkbox" name="topics" value="gobernanza" class="text-green-500 rounded"> <span
+                      class="text-sm">Governance</span> </label> <label
+                    class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
+                    <input type="checkbox" name="topics" value="regulacion" class="text-green-500 rounded"> <span
+                      class="text-sm">Regulation</span> </label> <label
+                    class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
+                    <input type="checkbox" name="topics" value="derechos" class="text-green-500 rounded"> <span
+                      class="text-sm">Human Rights</span> </label> <label
+                    class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
+                    <input type="checkbox" name="topics" value="sesgo" class="text-green-500 rounded"> <span
+                      class="text-sm">Bias/Fairness</span> </label> <label
+                    class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
+                    <input type="checkbox" name="topics" value="educacion" class="text-green-500 rounded"> <span
+                      class="text-sm">Education</span> </label> <label
+                    class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
+                    <input type="checkbox" name="topics" value="investigacion" class="text-green-500 rounded"> <span
+                      class="text-sm">Research</span> </label> <label
+                    class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
+                    <input type="checkbox" name="topics" value="formacion" class="text-green-500 rounded"> <span
+                      class="text-sm">Training</span> </label> <label
+                    class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
+                    <input type="checkbox" name="topics" value="otro" class="text-green-500 rounded"> <span
+                      class="text-sm">Other</span> </label>
+                </div>
+              </div>
+            </div><!-- Terms -->
+            <div class="space-y-3"><label
+                class="flex items-start gap-3 cursor-pointer p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors">
+                <input id="contrib_terms_original" type="checkbox" name="original" class="mt-1 text-green-500 rounded" required> <span
+                  class="text-sm text-gray-400"> I confirm the content is original or I have permission to share it. I
+                  acknowledge it will be published under a Creative Commons Attribution 4.0 license. </span>
+              </label> <label
+                class="flex items-start gap-3 cursor-pointer p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors">
+                <input id="contrib_terms_review" type="checkbox" name="review" class="mt-1 text-green-500 rounded" required> <span
+                  class="text-sm text-gray-400"> I understand the content will be reviewed by the CONVERGE-IA editorial
+                  team before being published. </span> </label> <label
+                class="flex items-start gap-3 cursor-pointer p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors">
+                <input id="contrib_terms_contact" type="checkbox" name="contact_ok" class="mt-1 text-green-500 rounded" required> <span
+                  class="text-sm text-gray-400"> I authorize CONVERGE-IA to contact me if there are questions about my
+                  contribution or to notify me of its publication. </span> </label>
+            </div><!-- Submit --> <button type="submit"
+              class="w-full btn-primary py-4 rounded-xl font-semibold text-lg flex items-center justify-center gap-2">
+              <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 2L11 13" />
+                <path d="M22 2l-7 20-4-9-9-4 20-7z" />
+              </svg> Send Suggestion </button>
+          </form>
+        </div><!-- Editorial Process -->
+        <div class="mb-8">
+          <h2 class="font-display text-2xl font-bold mb-6">Editorial Process</h2>
+          <div class="grid md:grid-cols-4 gap-6">
+            <div class="glass-card rounded-2xl p-6">
+              <div class="flex items-center gap-3 mb-4">
+                <div
+                  class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 font-bold">
+                  1
+                </div>
+                <h3 class="font-semibold">Receipt</h3>
+              </div>
+              <p class="text-gray-400 text-sm">Your suggestion is received by our editorial team.</p>
+            </div>
+            <div class="glass-card rounded-2xl p-6">
+              <div class="flex items-center gap-3 mb-4">
+                <div
+                  class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold">
+                  2
+                </div>
+                <h3 class="font-semibold">Review</h3>
+              </div>
+              <p class="text-gray-400 text-sm">Relevance, quality, and alignment with CONVERGE-IA are validated (3-7
+                days).</p>
+            </div>
+            <div class="glass-card rounded-2xl p-6">
+              <div class="flex items-center gap-3 mb-4">
+                <div
+                  class="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 font-bold">
+                  3
+                </div>
+                <h3 class="font-semibold">Decision</h3>
+              </div>
+              <p class="text-gray-400 text-sm">We notify you if it was accepted and when it will be published.</p>
+            </div>
+            <div class="glass-card rounded-2xl p-6">
+              <div class="flex items-center gap-3 mb-4">
+                <div
+                  class="w-10 h-10 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-400 font-bold">
+                  4
+                </div>
+                <h3 class="font-semibold">Publication</h3>
+              </div>
+              <p class="text-gray-400 text-sm">Your content is published with credits in the repository.</p>
+            </div>
+          </div>
+        </div><!-- Guidelines -->
+        <div class="glass-card rounded-2xl p-6 border-l-4 border-blue-500">
+          <h3 class="font-display text-xl font-semibold mb-4 flex items-center gap-3">
+            <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#4a90d9" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="16" x2="12" y2="12" />
+              <line x1="12" y1="8" x2="12.01" y2="8" />
+            </svg> Acceptance Criteria
+          </h3>
+          <ul class="space-y-2 text-gray-400 text-sm">
+            <li class="flex items-start gap-3"><span class="text-blue-400 mt-1">✓</span> <span>Content relevant to
+                ethical AI governance</span></li>
+            <li class="flex items-start gap-3"><span class="text-blue-400 mt-1">✓</span> <span>Updated and reliable
+                information</span></li>
+            <li class="flex items-start gap-3"><span class="text-blue-400 mt-1">✓</span> <span>Clear and professional
+                language</span></li>
+            <li class="flex items-start gap-3"><span class="text-blue-400 mt-1">✓</span> <span>Copyrights
+                respected</span></li>
+            <li class="flex items-start gap-3"><span class="text-blue-400 mt-1">✓</span> <span>Regional orientation
+                (preferably Ibero-American)</span></li>
+            <li class="flex items-start gap-3"><span class="text-blue-400 mt-1">✓</span> <span>Avoids direct commercial
+                promotion</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section><!-- ========== PAGE: CONTACT ========== -->
+  <section id="page-contact" class="page-section">
+    <div class="pt-24 pb-16 gradient-mesh">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-sm mb-6">
+            <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg><span>Get in Touch</span>
+          </div>
+          <h1 class="font-display text-4xl sm:text-5xl font-bold mb-6">Contact</h1>
+          <p class="text-gray-400 text-lg max-w-3xl mx-auto">We are here to answer your questions, receive proposals,
+            and facilitate your connection with the network.</p>
+        </div>
+      </div>
+    </div>
+    <div class="py-20" style="background-color: var(--secondary-surface);">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-3 gap-8 mb-16"><!-- Contact Card 1 -->
+          <div class="glass-card rounded-2xl p-8 text-center">
+            <div class="w-16 h-16 rounded-xl bg-blue-500/20 flex items-center justify-center mx-auto mb-4">
+              <svg width="32" height="32" viewbox="0 0 24 24" fill="none" stroke="#4a90d9" stroke-width="1.5">
+                <path
+                  d="M3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z" />
+              </svg>
+            </div>
+            <h3 class="font-display text-lg font-semibold mb-2">Institutional Email</h3>
+            <p class="text-gray-400 text-sm mb-4">For general inquiries, membership, and support:</p><a
+              href="mailto:ethicalai_ue_ciodd@ucr.ac.cr"
+              class="text-blue-400 hover:text-blue-300 font-medium">ethicalai_ue_ciodd@ucr.ac.cr</a>
+          </div><!-- Contact Card 2 -->
+          <div class="glass-card rounded-2xl p-8 text-center">
+            <div class="w-16 h-16 rounded-xl bg-purple-500/20 flex items-center justify-center mx-auto mb-4">
+              <svg width="32" height="32" viewbox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="1.5">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="2" y1="12" x2="22" y2="12" />
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+              </svg>
+            </div>
+            <h3 class="font-display text-lg font-semibold mb-2">Website</h3>
+            <p class="text-gray-400 text-sm mb-4">Check information, resources, and updates:</p><a
+              href="https://www.ethicalaiucr.info/" target="_blank" rel="noopener noreferrer"
+              class="text-blue-400 hover:text-blue-300 font-medium flex items-center justify-center gap-2">
+              www.ethicalaiucr.info
+              <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7 7 17 7 17 17" />
+              </svg></a>
+          </div><!-- Contact Card 3 -->
+          <div class="glass-card rounded-2xl p-8 text-center">
+            <div class="w-16 h-16 rounded-xl bg-green-500/20 flex items-center justify-center mx-auto mb-4">
+              <svg width="32" height="32" viewbox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="1.5">
+                <path d="M15 10l4.553-2.276A1 1 0 0 1 21 8.618v6.764a1 1 0 0 1-1.447.894L15 14M3 8h8v8H3z" />
+              </svg>
+            </div>
+            <h3 class="font-display text-lg font-semibold mb-2">Social Media</h3>
+            <p class="text-gray-400 text-sm mb-4">Social media channels coming soon. Stay tuned for updates.</p>
+          </div>
+        </div><!-- Legal Notice -->
+        <div class="p-6 rounded-2xl border-2 border-gray-700 bg-white/5">
+          <div class="flex items-start gap-4">
+            <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2"
+              class="flex-shrink-0 mt-1">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+            <div>
+              <h3 class="font-semibold text-sm text-amber-400 mb-2">Legal Notice - Erasmus+ Project</h3>
+              <p class="text-gray-400 text-xs">The support of the European Union for the production of this
+                communication does not
+                constitute an endorsement of its content, which reflects only the opinion of the authors. The
+                Commission cannot be held responsible for any use which may be made of the information contained
+                therein.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer class="py-12 border-t border-gray-800" style="background-color: var(--primary-bg);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-4 gap-8 mb-8"><!-- Brand -->
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-3 mb-4">
+            <div
+              class="w-10 h-10 rounded-lg bg-gradient-to-br from-amber-500 to-blue-500 flex items-center justify-center">
+              <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <circle cx="12" cy="12" r="3" />
+                <circle cx="12" cy="5" r="2" />
+                <circle cx="19" cy="12" r="2" />
+                <circle cx="12" cy="19" r="2" />
+                <circle cx="5" cy="12" r="2" />
+              </svg>
+            </div><span class="font-display font-semibold text-lg">CONVERGE-IA</span>
+          </div>
+          <p class="text-gray-400 text-sm max-w-sm mb-4">Academic Convergence Network in Artificial Intelligence. Shared
+            knowledge with responsible AI.</p>
+          <p class="text-gray-500 text-xs">Project co-funded by the Erasmus+ programme of the European Union.</p>
+        </div><!-- Links -->
+        <div>
+          <h4 class="font-semibold mb-4">Navigation</h4>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li><button onclick="navigateTo('home')" class="hover:text-white transition-colors">Home</button></li>
+            <li><button onclick="navigateTo('about')" class="hover:text-white transition-colors">About</button>
+            </li>
+            <li><button onclick="navigateTo('objectives')"
+                class="hover:text-white transition-colors">Objectives</button>
+            </li>
+            <li><button onclick="navigateTo('contact')" class="hover:text-white transition-colors">Contact</button>
+            </li>
+          </ul>
+        </div><!-- Contact -->
+        <div>
+          <h4 class="font-semibold mb-4">Contact</h4>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li class="flex items-center gap-2">
+              <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg> ethicalai_ue_ciodd@ucr.ac.cr
+            </li>
+            <li class="flex items-center gap-2">
+              <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="2" y1="12" x2="22" y2="12" />
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10" />
+              </svg> www.ethicalaiucr.info
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-gray-500 text-sm">© 2026 CONVERGE-IA. All rights reserved.</p>
+        <div class="flex items-center gap-6 text-sm text-gray-500"><span>Privacy</span> <span>Terms</span>
+          <span>Accessibility</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- New Footer Image -->
+  <div class="w-full bg-white">
+    <img src="footer.png" alt="Footer Logo" class="w-full h-auto object-cover" loading="lazy">
+  </div>
+  </div>
+</body>
+
+</html>
