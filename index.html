@@ -1262,17 +1262,17 @@
             </svg><span>Membership</span>
           </div>
           <h1 class="font-display text-4xl sm:text-5xl font-bold mb-6">Join the Network</h1>
-          <p class="text-gray-400 text-lg max-w-2xl mx-auto">Complete the form to request institutional or individual membership in CONVERGE-IA.</p>
+          <p class="text-gray-400 text-lg max-w-2xl mx-auto">Select institutional or individual membership to access the registration forms.</p>
         </div>
       </div>
     </div>
     <div class="pb-20" style="background-color: var(--secondary-surface);">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8"><!-- Membership Types -->
-        <div class="grid md:grid-cols-2 gap-6 mb-12"><button onclick="selectMembershipType('institution')"
-            id="btn-institution"
-            class="glass-card rounded-2xl p-6 text-left transition-all hover:border-amber-400/50 border-2 border-transparent membership-btn active">
+        <div class="grid md:grid-cols-2 gap-6 mb-12">
+          <a href="https://iadocenciaed3698.my.canva.site/convergeinstituional" target="_blank" rel="noopener noreferrer"
+            class="glass-card rounded-2xl p-6 text-left transition-all duration-300 hover:border-amber-400/50 border-2 border-transparent block hover:-translate-y-1 hover:shadow-xl hover:shadow-amber-500/5">
             <div class="flex items-center gap-4 mb-4">
-              <div class="w-14 h-14 rounded-xl bg-amber-500/20 flex items-center justify-center">
+              <div class="w-14 h-14 rounded-xl bg-amber-500/20 flex items-center justify-center animate-pulse">
                 <svg width="28" height="28" viewbox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2">
                   <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
                   <path d="M6 12v5c3 3 9 3 12 0v-5" />
@@ -1284,10 +1284,12 @@
               </div>
             </div>
             <p class="text-gray-400 text-sm">Full membership with access to all benefits of the network for your institution.</p>
-          </button> <button onclick="selectMembershipType('individual')" id="btn-individual"
-            class="glass-card rounded-2xl p-6 text-left transition-all hover:border-blue-400/50 border-2 border-transparent membership-btn">
+          </a>
+          
+          <a href="https://iadocenciaed3698.my.canva.site/convergiaindividual" target="_blank" rel="noopener noreferrer"
+            class="glass-card rounded-2xl p-6 text-left transition-all duration-300 hover:border-blue-400/50 border-2 border-transparent block hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/5">
             <div class="flex items-center gap-4 mb-4">
-              <div class="w-14 h-14 rounded-xl bg-blue-500/20 flex items-center justify-center">
+              <div class="w-14 h-14 rounded-xl bg-blue-500/20 flex items-center justify-center animate-pulse">
                 <svg width="28" height="28" viewbox="0 0 24 24" fill="none" stroke="#4a90d9" stroke-width="2">
                   <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
                   <circle cx="12" cy="7" r="4" />
@@ -1299,111 +1301,7 @@
               </div>
             </div>
             <p class="text-gray-400 text-sm">Individual participation in training and research activities of the network.</p>
-          </button>
-        </div><!-- Registration Form -->
-        <div class="glass-card rounded-3xl p-8 md:p-10">
-          <h2 class="font-display text-2xl font-bold mb-6">Application Form</h2>
-          <form id="registration-form" class="space-y-6"><!-- Institution Fields -->
-            <div id="institution-fields">
-              <div class="grid md:grid-cols-2 gap-6 mb-6">
-                <div><label for="institution_name" class="block text-sm font-medium text-gray-300 mb-2">Institution Name *</label>
-                  <input id="institution_name" type="text" name="institution_name" placeholder="University of..."
-                    class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500">
-                </div>
-                <div><label for="institution_country" class="block text-sm font-medium text-gray-300 mb-2">Country *</label> <select
-                    id="institution_country" name="institution_country" class="w-full input-field rounded-xl py-3 px-4 text-white">
-                    <option value="" class="bg-gray-800">Select a country</option>
-                    <option value="CR" class="bg-gray-800">Costa Rica</option>
-                    <option value="MX" class="bg-gray-800">Mexico</option>
-                    <option value="CO" class="bg-gray-800">Colombia</option>
-                    <option value="AR" class="bg-gray-800">Argentina</option>
-                    <option value="CL" class="bg-gray-800">Chile</option>
-                    <option value="PE" class="bg-gray-800">Peru</option>
-                    <option value="EC" class="bg-gray-800">Ecuador</option>
-                    <option value="ES" class="bg-gray-800">Spain</option>
-                    <option value="OTHER" class="bg-gray-800">Other</option>
-                  </select>
-                </div>
-              </div>
-              <div class="mb-6"><label class="block text-sm font-medium text-gray-300 mb-2">Institution Type *</label>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-3"><label
-                    class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
-                    <input type="radio" name="inst_type" value="university" class="text-amber-500"> <span
-                      class="text-sm">University</span> </label> <label
-                    class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
-                    <input type="radio" name="inst_type" value="research" class="text-amber-500"> <span
-                      class="text-sm">R&D Center</span> </label> <label
-                    class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
-                    <input type="radio" name="inst_type" value="government" class="text-amber-500"> <span
-                      class="text-sm">Government</span> </label> <label
-                    class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
-                    <input type="radio" name="inst_type" value="ngo" class="text-amber-500"> <span
-                      class="text-sm">NGO</span> </label>
-                </div>
-              </div>
-            </div><!-- Contact Person -->
-            <div class="border-t border-gray-700 pt-6">
-              <h3 class="font-semibold text-lg mb-4">Contact Person</h3>
-              <div class="grid md:grid-cols-2 gap-6">
-                <div><label for="contact_name" class="block text-sm font-medium text-gray-300 mb-2">Full Name *</label> <input
-                    id="contact_name" type="text" name="contact_name" placeholder="First and last name"
-                    class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500" required>
-                </div>
-                <div><label for="contact_position" class="block text-sm font-medium text-gray-300 mb-2">Job Title / Position</label> <input
-                    id="contact_position" type="text" name="contact_position" placeholder="E.g., Director of Research"
-                    class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500">
-                </div>
-                <div><label for="contact_email" class="block text-sm font-medium text-gray-300 mb-2">Email Address *</label> <input
-                    id="contact_email" type="email" name="contact_email" placeholder="email@institution.edu"
-                    class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500" required>
-                </div>
-                <div><label for="contact_phone" class="block text-sm font-medium text-gray-300 mb-2">Phone Number</label> <input type="tel"
-                    id="contact_phone" name="contact_phone" placeholder="+506 0000-0000"
-                    class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500">
-                </div>
-              </div>
-            </div><!-- Areas of Interest -->
-            <div class="border-t border-gray-700 pt-6">
-              <h3 class="font-semibold text-lg mb-4">Areas of Interest</h3>
-              <div class="grid grid-cols-2 md:grid-cols-3 gap-3"><label
-                  class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
-                  <input type="checkbox" name="areas" value="docencia" class="text-amber-500 rounded"> <span
-                    class="text-sm">Teaching and Training</span> </label> <label
-                  class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
-                  <input type="checkbox" name="areas" value="investigacion" class="text-amber-500 rounded"> <span
-                    class="text-sm">Research</span> </label> <label
-                  class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
-                  <input type="checkbox" name="areas" value="etica" class="text-amber-500 rounded"> <span
-                    class="text-sm">Ethics and Governance</span> </label> <label
-                  class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
-                  <input type="checkbox" name="areas" value="cooperacion" class="text-amber-500 rounded"> <span
-                    class="text-sm">Regional Cooperation</span> </label> <label
-                  class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
-                  <input type="checkbox" name="areas" value="politicas" class="text-amber-500 rounded"> <span
-                    class="text-sm">Public Policies</span> </label> <label
-                  class="flex items-center gap-2 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
-                  <input type="checkbox" name="areas" value="industria" class="text-amber-500 rounded"> <span
-                    class="text-sm">Industry Alliances</span> </label>
-              </div>
-            </div><!-- Message -->
-            <div class="border-t border-gray-700 pt-6"><label for="motivation"
-                class="block text-sm font-medium text-gray-300 mb-2">Motivation to join (optional)</label>
-              <textarea id="motivation" name="message" rows="4"
-                placeholder="Briefly tell us why you want to be part of CONVERGE-IA..."
-                class="w-full input-field rounded-xl py-3 px-4 text-white placeholder-gray-500 resize-none"></textarea>
-            </div><!-- Terms -->
-            <div class="border-t border-gray-700 pt-6"><label class="flex items-start gap-3 cursor-pointer"> <input
-                  id="terms_accept" type="checkbox" name="terms" class="mt-1 text-amber-500 rounded" required> <span
-                  class="text-sm text-gray-400"> I have read and accept the <span class="text-blue-400">terms and
-                    conditions</span> of membership of CONVERGE-IA,
-                  including the commitment to the ethical principles of the network. </span> </label>
-            </div><!-- Submit --> <button type="submit"
-              class="w-full btn-primary py-4 rounded-xl font-semibold text-lg flex items-center justify-center gap-2">
-              <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M22 2L11 13" />
-                <path d="M22 2l-7 20-4-9-9-4 20-7z" />
-              </svg> Submit Request </button>
-          </form>
+          </a>
         </div><!-- Help -->
         <div class="text-center mt-8">
           <p class="text-gray-400 text-sm">Have questions? Write to us at <a href="mailto:ethicalai_ue_ciodd@ucr.ac.cr"

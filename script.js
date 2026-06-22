@@ -216,65 +216,6 @@ if (contributeForm) {
         }, 2000);
     });
 }
-
-const registrationForm = document.getElementById('registration-form');
-if (registrationForm) {
-    registrationForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        showToast('Sending membership request...', 'info');
-
-        setTimeout(() => {
-            showToast('Request received! We will review your application soon', 'success');
-            this.reset();
-            navigateTo('home');
-        }, 2000);
-    });
-}
-
-// ===== MEMBERSHIP TYPE SELECTION =====
-function selectMembershipType(type) {
-    const btnInstitution = document.getElementById('btn-institution');
-    const btnIndividual = document.getElementById('btn-individual');
-    const institutionFields = document.getElementById('institution-fields');
-    const instName = document.getElementById('institution_name');
-
-    if (type === 'institution') {
-        if (btnInstitution) {
-            btnInstitution.classList.add('active', 'border-amber-400/50');
-            btnInstitution.classList.remove('border-transparent');
-        }
-        if (btnIndividual) {
-            btnIndividual.classList.remove('active', 'border-blue-400/50');
-            btnIndividual.classList.add('border-transparent');
-        }
-        if (institutionFields) {
-            institutionFields.style.display = 'block';
-        }
-        if (instName) {
-            instName.required = true;
-        }
-    } else if (type === 'individual') {
-        if (btnIndividual) {
-            btnIndividual.classList.add('active', 'border-blue-400/50');
-            btnIndividual.classList.remove('border-transparent');
-        }
-        if (btnInstitution) {
-            btnInstitution.classList.remove('active', 'border-amber-400/50');
-            btnInstitution.classList.add('border-transparent');
-        }
-        if (institutionFields) {
-            institutionFields.style.display = 'none';
-        }
-        if (instName) {
-            instName.required = false;
-            instName.value = '';
-        }
-        document.querySelectorAll('input[name="inst_type"]').forEach(radio => {
-            radio.checked = false;
-        });
-    }
-}
-
 // ===== INITIALIZATION & HISTORY HANDLING =====
 window.addEventListener('popstate', () => {
     const hash = window.location.hash.substring(1);
@@ -283,7 +224,6 @@ window.addEventListener('popstate', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     updateUI();
-    selectMembershipType('institution');
     const hash = window.location.hash.substring(1);
     renderPage(hash || 'home');
 });

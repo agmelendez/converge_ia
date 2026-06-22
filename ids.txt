@@ -1,6 +1,4 @@
 app-container
-btn-individual
-btn-institution
 contact-form
 contribute-form
 governance-request-form
@@ -9,7 +7,6 @@ hero-login-btn
 hero-tagline
 hero-title
 heroGrad
-institution-fields
 lineGrad
 login-email
 login-form
@@ -29,6 +26,5 @@ page-objectives
 page-projects
 page-resources
 projects-grid
-registration-form
 resources-grid
 toast-container
