@@ -187,6 +187,63 @@ function handleGovernanceRequest() {
     }, 500);
 }
 
+// ===== LIGHTBOX MODAL =====
+function openLightbox(src, caption) {
+    const modal = document.getElementById('lightbox-modal');
+    const img = document.getElementById('lightbox-img');
+    const captionEl = document.getElementById('lightbox-caption');
+    if (modal && img) {
+        img.src = src;
+        img.alt = caption;
+        if (captionEl) captionEl.textContent = caption;
+        
+        modal.classList.remove('hidden');
+        // Allow the browser to register display change before showing opacity transition
+        setTimeout(() => {
+            modal.classList.remove('pointer-events-none');
+            modal.classList.add('opacity-100');
+            img.classList.remove('scale-95');
+            img.classList.add('scale-100');
+        }, 10);
+    }
+}
+
+function closeLightbox() {
+    const modal = document.getElementById('lightbox-modal');
+    const img = document.getElementById('lightbox-img');
+    if (modal && img) {
+        modal.classList.remove('opacity-100');
+        img.classList.remove('scale-100');
+        img.classList.add('scale-95');
+        modal.classList.add('pointer-events-none');
+        
+        // Wait for CSS transition to complete before adding hidden
+        setTimeout(() => {
+            modal.classList.add('hidden');
+            img.src = '';
+        }, 300);
+    }
+}
+
+function handleLightboxBackdropClick(event) {
+    const modal = document.getElementById('lightbox-modal');
+    const img = document.getElementById('lightbox-img');
+    // Close only if click occurred outside the image itself
+    if (event.target !== img) {
+        closeLightbox();
+    }
+}
+
+// Close lightbox on Escape key press
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        const modal = document.getElementById('lightbox-modal');
+        if (modal && !modal.classList.contains('hidden')) {
+            closeLightbox();
+        }
+    }
+});
+
 // ===== FORM HANDLERS =====
 
 const govRequestForm = document.getElementById('governance-request-form');

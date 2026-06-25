@@ -351,7 +351,8 @@
               data-page="objectives">Objectives</button> <button onclick="navigateTo('resources')"
               class="nav-link text-sm font-medium" data-page="resources">Resources</button> <button
               onclick="navigateTo('projects')" class="nav-link text-sm font-medium"
-              data-page="projects">Projects</button> <button onclick="navigateTo('contact')"
+              data-page="projects">Projects</button> <button onclick="navigateTo('news')"
+              class="nav-link text-sm font-medium" data-page="news">News</button> <button onclick="navigateTo('contact')"
               class="nav-link text-sm font-medium" data-page="contact">Contact</button> <button
               onclick="navigateTo('join')" class="btn-primary px-4 py-2 rounded-lg text-sm font-semibold">Join</button>
           </div><!-- Mobile Menu Button --> <button onclick="toggleMobileMenu()"
@@ -375,6 +376,8 @@
             class="block w-full text-left px-3 py-2 rounded-lg hover:bg-white/10">Resources</button> <button
             onclick="navigateTo('projects'); toggleMobileMenu();"
             class="block w-full text-left px-3 py-2 rounded-lg hover:bg-white/10">Projects</button> <button
+            onclick="navigateTo('news'); toggleMobileMenu();"
+            class="block w-full text-left px-3 py-2 rounded-lg hover:bg-white/10">News</button> <button
             onclick="navigateTo('contact'); toggleMobileMenu();"
             class="block w-full text-left px-3 py-2 rounded-lg hover:bg-white/10">Contact</button> <button
             onclick="navigateTo('join'); toggleMobileMenu();"
@@ -917,16 +920,6 @@
                   </div>
                   <div class="border-l-4 border-blue-400 pl-4 py-2">
                     <p class="text-gray-300 italic">"Universities have the responsibility to lead ethical reflection on emerging technologies and train citizens capable of participating in decisions that affect the future of their communities."</p>
-                  </div>
-                  <div class="grid grid-cols-2 gap-4">
-                    <div class="text-center p-4 rounded-lg bg-white/5">
-                      <p class="text-2xl font-bold text-amber-400">0</p>
-                      <p class="text-sm text-gray-400">Researchers</p>
-                    </div>
-                    <div class="text-center p-4 rounded-lg bg-white/5">
-                      <p class="text-2xl font-bold text-blue-400">0</p>
-                      <p class="text-sm text-gray-400">Institutions</p>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -1598,7 +1591,89 @@
         </div>
       </div>
     </div>
-  </section><!-- ========== PAGE: GOVERNANCE SUPPORT ========== -->
+  </section>
+
+  <!-- ========== PAGE: NEWS & EVENTS ========== -->
+  <section id="page-news" class="page-section">
+    <div class="pt-24 pb-16 gradient-mesh">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-sm mb-6">
+            <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2">
+              <path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10l4 4v10a2 2 0 0 1-2 2z" />
+              <path d="M12 11h4" />
+              <path d="M12 15h4" />
+              <path d="M8 11h.01" />
+              <path d="M8 15h.01" />
+            </svg><span>Network Activities</span>
+          </div>
+          <h1 class="font-display text-4xl sm:text-5xl font-bold mb-6">News & Events</h1>
+          <p class="text-gray-400 text-lg max-w-3xl mx-auto">Stay up to date with the latest developments, academic forums, and announcements from the CONVERGE-IA network.</p>
+        </div>
+      </div>
+    </div>
+    <div class="py-20" style="background-color: var(--secondary-surface);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto space-y-8">
+          <!-- News Card 1 -->
+          <div class="glass-card rounded-2xl p-6 md:p-8 hover:border-amber-400/50 hover:border transition-all border border-white/10 flex flex-col md:flex-row gap-8">
+            <!-- Thumbnail Image -->
+            <div class="w-full md:w-72 shrink-0 rounded-xl overflow-hidden bg-black/20 flex items-center justify-center relative group aspect-[4/3] md:aspect-auto md:h-48 border border-white/5">
+              <img src="Blog/News 1/ImagenRed.jpeg" alt="Valencia Staff Week" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 cursor-zoom-in" onclick="openLightbox(this.src, 'Valencia Staff Week: EthicalAIthon Hackathon (Valencia, Spain)')">
+              <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
+                <div class="p-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 transform scale-90 group-hover:scale-100 transition-transform duration-300">
+                  <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                    <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <!-- Text Content -->
+            <div class="flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-400/10 text-amber-400 uppercase tracking-wider">News</span>
+                  <span class="text-sm text-gray-400 flex items-center gap-1.5">
+                    <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                      <line x1="16" y1="2" x2="16" y2="6" />
+                      <line x1="8" y1="2" x2="8" y2="6" />
+                      <line x1="3" y1="10" x2="21" y2="10" />
+                    </svg>
+                    May 25-27, 2026
+                  </span>
+                </div>
+                <h3 class="font-display text-2xl font-bold text-white mb-3 hover:text-amber-400 transition-colors">
+                  Valencia Staff Week: EthicalAIthon Hackathon
+                </h3>
+                <p class="text-gray-300 leading-relaxed text-sm md:text-base">
+                  From May 25 to 27, 2026, IES Abastos in Valencia, Spain, hosted the Valencia Staff Week, an international activity developed within the framework of the Ethical AI project under the European Union's Erasmus+ programme. The event adopted the format of an ethical hackathon entitled 'EthicalAIthon'—an international forum for academic exchange, collaboration, and innovation oriented toward developing intervention proposals to address gaps in the ethical use of artificial intelligence within the educational context.
+                </p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-white/5 flex flex-wrap items-center justify-between gap-2 text-xs text-gray-400">
+                <span class="flex items-center gap-1">
+                  <svg width="12" height="12" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                  IES Abastos, Valencia, Spain
+                </span>
+                <span class="flex items-center gap-1">
+                  <svg width="12" height="12" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 8v4l3 3" />
+                  </svg>
+                  Erasmus+ Programme
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PAGE: GOVERNANCE SUPPORT ========== -->
   <section id="page-governance" class="page-section">
     <div class="pt-24 pb-16 gradient-mesh">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -2287,6 +2362,9 @@
             <li><button onclick="navigateTo('objectives')"
                 class="hover:text-white transition-colors">Objectives</button>
             </li>
+            <li><button onclick="navigateTo('news')"
+                class="hover:text-white transition-colors">News</button>
+            </li>
             <li><button onclick="navigateTo('contact')" class="hover:text-white transition-colors">Contact</button>
             </li>
           </ul>
@@ -2321,6 +2399,19 @@
   <!-- New Footer Image -->
   <div class="w-full bg-white">
     <img src="footer.png" alt="Footer Logo" class="w-full h-auto object-cover" loading="lazy">
+  </div>
+  <!-- Lightbox Modal -->
+  <div id="lightbox-modal" class="fixed inset-0 z-[100] hidden bg-black/95 backdrop-blur-sm flex items-center justify-center opacity-0 transition-opacity duration-300 pointer-events-none" onclick="handleLightboxBackdropClick(event)">
+    <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white/70 hover:text-white transition-colors p-2.5 rounded-full bg-white/10 hover:bg-white/20" aria-label="Close image">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <div class="relative max-w-[90%] max-h-[85vh] flex flex-col items-center">
+      <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[78vh] rounded-lg object-contain shadow-2xl border border-white/10 transform scale-95 transition-transform duration-300">
+      <p id="lightbox-caption" class="text-gray-300 text-sm mt-4 text-center px-4 max-w-xl font-medium"></p>
+    </div>
   </div>
   </div>
 </body>
