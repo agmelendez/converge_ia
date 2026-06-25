@@ -60,6 +60,11 @@ function navigateTo(page) {
 function renderPage(page) {
     if (!page) page = 'home';
 
+    if (page === 'resources' || page === 'projects') {
+        navigateTo('home');
+        return;
+    }
+
     document.querySelectorAll('.page-section').forEach(section => {
         section.classList.remove('active');
     });
